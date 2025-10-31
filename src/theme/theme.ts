@@ -961,6 +961,25 @@ export const getThemeOptions = (): ThemeOptions => ({
         }),
       },
     },
+    MuiTableHead: {
+      styleOverrides: {
+        root: {
+          ".MuiTableCell-root": {
+            padding: "0px 8px",
+            lineHeight: "20px",
+            height: "40px",
+          },
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          padding: 8,
+          borderColor: colors.grey[100],
+        },
+      },
+    },
     // ... all component customizations
   },
 });
