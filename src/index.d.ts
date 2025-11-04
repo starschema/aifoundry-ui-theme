@@ -37,3 +37,11 @@ export declare module "@mui/material/IconButton" {
     destructive: true;
   }
 }
+
+export declare module "@mui/material/PaginationItem" {
+  interface PaginationItemProps {
+    disableFocusRipple?: boolean;
+    disableRipple?: boolean;
+    disableTouchRipple?: boolean;
+  }
+}

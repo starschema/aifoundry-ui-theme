@@ -802,7 +802,7 @@ export default function AllMaterialUIComponents() {
           <Typography variant="h6" gutterBottom>
             Table
           </Typography>
-          <TableContainer component={Paper} variant="outlined">
+          <TableContainer>
             <Table>
               <TableHead>
                 <TableRow>

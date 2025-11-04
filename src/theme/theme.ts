@@ -1052,18 +1052,60 @@ export const getThemeOptions = (): ThemeOptions => ({
         },
       },
     },
-
-    /*     "&.MuiButton-contained": {
-      backgroundColor: colors.purple[700],
-      border: `2px solid ${colors.purple[700]}`,
-
-      "&:hover": {
-        backgroundColor: colors.purple[700],
-        borderColor: colors.purple[200],
+    MuiTableHead: {
+      styleOverrides: {
+        root: {
+          ".MuiTableCell-root": {
+            padding: "0px 8px",
+            lineHeight: "20px",
+            height: "40px",
+          },
+        },
       },
-      "&:focus": {
-        backgroundColor: colors.purple[700],
-        borderColor: colors.grey[400], */
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          padding: 8,
+          borderColor: colors.grey[100],
+        },
+      },
+    },
+    MuiPagination: {
+      defaultProps: {
+        shape: "rounded",
+        variant: "text",
+        color: "standard",
+      },
+    },
+    MuiPaginationItem: {
+      defaultProps: {
+        disableFocusRipple: true,
+        disableRipple: true,
+        disableTouchRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          minHeight: 36,
+          width: 34,
+          padding: "7.5px 4px",
+          gap: 8,
+          "&.Mui-selected": {
+            backgroundColor: "rgba(255, 255, 255, 0.10)",
+            border: `1px solid ${colors.grey[200]}`,
+            boxShadow:
+              "0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10)",
+          },
+          "&:hover": {
+            backgroundColor: colors.grey[100],
+          },
+          "&.Mui-focusVisible": {
+            boxShadow: `0 0 0 3px ${colors.grey[300]}`,
+            backgroundColor: "transparent",
+          },
+        },
+      },
+    },
     // ... all component customizations
   },
 });
