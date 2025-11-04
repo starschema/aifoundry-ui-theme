@@ -26,3 +26,11 @@ export declare module "@mui/material/Alert" {
     iconFlipped: true;
   }
 }
+
+export declare module "@mui/material/PaginationItem" {
+  interface PaginationItemProps {
+    disableFocusRipple?: boolean;
+    disableRipple?: boolean;
+    disableTouchRipple?: boolean;
+  }
+}
