@@ -108,7 +108,10 @@ export const colors = {
     A400: "#1D2123",
     A700: "#000000",
   },
-  red: "#DC2626",
+  red: {
+    800: "#FCA5A5",
+    900: "#DC2626",
+  },
 };
 
 export const getThemeOptions = (): ThemeOptions => ({
@@ -364,35 +367,35 @@ export const getThemeOptions = (): ThemeOptions => ({
           },
           "&.MuiButton-contained": {
             backgroundColor: colors.purple[700],
-            border: `2px solid ${colors.purple[700]}`,
+            border: "none",
 
             "&:hover": {
               backgroundColor: colors.purple[700],
-              borderColor: colors.purple[200],
+              boxShadow: `0px 0px 0px 3px ${colors.purple[200]}`,
             },
             "&:focus": {
               backgroundColor: colors.purple[700],
-              borderColor: colors.grey[400],
+              boxShadow: `0px 0px 0px 3px ${colors.grey[400]}`,
             },
             "&:disabled": {
               backgroundColor: colors.purple[200],
-              borderColor: colors.purple[200],
               color: "white",
             },
           },
           "&.MuiButton-contained.MuiButton-colorSecondary": {
             backgroundColor: "transparent",
-            border: `1px solid ${colors.purple[700]}`,
+            border: "none",
+            boxShadow: `0px 0px 0px 1px ${colors.purple[700]}`,
             color: colors.grey.A400,
             "&:hover": {
-              border: `2px solid ${colors.purple[700]}`,
+              boxShadow: `0px 0px 0px 2px ${colors.purple[700]}`,
             },
             "&:focus": {
-              border: `3px solid ${colors.purple[700]}`,
+              boxShadow: `0px 0px 0px 3px ${colors.purple[700]}`,
             },
             "&:disabled": {
               backgroundColor: colors.grey[100],
-              border: "none",
+              boxShadow: "none",
               color: colors.grey[800],
             },
           },
@@ -419,46 +422,42 @@ export const getThemeOptions = (): ThemeOptions => ({
 
             "&:hover": {
               backgroundColor: colors.grey[200],
-              borderColor: colors.grey[200],
             },
             "&:focus": {
               backgroundColor: "transparent",
-              borderColor: colors.grey[200],
+              boxShadow: `0px 0px 0px 3px ${colors.grey[200]}`,
             },
             "&:disabled": {
               color: colors.grey[800],
             },
           },
           "&.MuiButton-destructive": {
-            backgroundColor: colors.red,
-            border: `3px solid ${colors.red}`,
+            backgroundColor: colors.red[900],
+            border: "none",
             color: "white",
 
             "&:hover": {
-              backgroundColor: colors.red,
+              backgroundColor: colors.red[900],
             },
             "&:focus": {
-              backgroundColor: colors.red,
-              borderColor: colors.grey[400],
+              backgroundColor: colors.red[900],
+              boxShadow: `0px 0px 0px 3px ${colors.red[800]}`,
             },
             "&:disabled": {
               backgroundColor: "#ee9292",
-              borderColor: "#ee9292",
               color: "white",
             },
           },
           "&.MuiButton-hcl": {
             background: "linear-gradient(90deg, #5F1EBE 10%, #3C91FF 100%)",
-            //border: `3px solid transparent`,
             color: "white",
 
             "&:hover": {
               background: "linear-gradient(90deg, #5F1EBE 10%, #5F1EBE 100%)",
-              borderColor: colors.purple[700],
             },
             "&:focus": {
               background: `linear-gradient(90deg, ${colors.purple[800]} 10%, ${colors.purple[800]} 100%)`,
-              border: `3px solid ${colors.grey[200]}`,
+              boxShadow: `0px 0px 0px 3px ${colors.grey[200]}`,
             },
             "&:disabled": {
               background: colors.purple[200],
@@ -477,6 +476,7 @@ export const getThemeOptions = (): ThemeOptions => ({
               left: 0,
               right: 0,
               bottom: 0,
+              border: "none",
               borderRadius: "inherit",
               padding: "1px",
               background: "linear-gradient(135deg, #7ABEF7 0%, #572AC2 100%)",
@@ -485,18 +485,11 @@ export const getThemeOptions = (): ThemeOptions => ({
               WebkitMaskComposite: "xor",
               maskComposite: "exclude",
             },
-            /* borderColor: "transparent",
-            background:
-              "linear-gradient(to right, white, white),linear-gradient(to right, #7ABEF7 14.04% , #572AC2 83.84%)",
-            backgroundClip: "padding-box, border-box",
-            backgroundOrigin: "padding-box, border-box", */
-            "&:hover": {
-              background: "linear-gradient(135deg, #764ba2 0%, #667eea 100%)",
+            "&:hover::before": {
               padding: "2px",
             },
-            "&:focus": {
-              background: `linear-gradient(90deg, ${colors.purple[800]} 10%, ${colors.purple[800]} 100%)`,
-              border: `3px solid ${colors.grey[200]}`,
+            "&:focus::before": {
+              padding: "3px",
             },
             "&:disabled": {
               backgroundColor: colors.purple[200],
@@ -572,11 +565,11 @@ export const getThemeOptions = (): ThemeOptions => ({
           width: "100%",
 
           "&.MuiAlert-colorError": {
-            borderColor: colors.red,
-            color: colors.red,
+            borderColor: colors.red[900],
+            color: colors.red[900],
 
             "& .MuiSvgIcon-root": {
-              color: colors.red,
+              color: colors.red[900],
             },
           },
           "& .MuiAlert-icon": {
@@ -961,6 +954,116 @@ export const getThemeOptions = (): ThemeOptions => ({
         }),
       },
     },
+    MuiIconButton: {
+      defaultProps: {
+        disableFocusRipple: true,
+        disableRipple: true,
+        disableTouchRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          width: "36px",
+          height: "36px",
+          backgroundColor: colors.purple[700],
+          borderRadius: "6px",
+          color: "white",
+          fontSize: "16.25px",
+          "&:hover": {
+            backgroundColor: colors.purple[700],
+          },
+          "&:focus": {
+            boxShadow: `0px 0px 0px 3px ${colors.grey[400]}`,
+          },
+
+          "&:disabled": {
+            backgroundColor: colors.purple[200],
+            borderColor: colors.purple[200],
+            color: "white",
+          },
+
+          "& .MuiSvgIcon-root": {
+            width: "16.25px",
+          },
+
+          "&.MuiIconButton-colorSecondary": {
+            backgroundColor: colors.grey[200],
+            color: colors.grey.A400,
+            "&:focus": {
+              boxShadow: `0px 0px 0px 3px ${colors.grey[400]}`,
+            },
+            "&:disabled": {
+              backgroundColor: colors.grey[100],
+              border: "none",
+              color: colors.grey[800],
+            },
+          },
+          "&.MuiIconButton-outlined": {
+            backgroundColor: "transparent",
+            border: `1px solid ${colors.grey[200]}`,
+            boxShadow: "0px 1px 2px -1px #0000001A",
+            color: colors.grey.A400,
+
+            "&:hover": {
+              borderColor: colors.grey[400],
+              boxShadow: "0px 1px 3px 0px #0000001A",
+            },
+            "&:focus": {
+              boxShadow: "0px 0px 0px 3px #D4D4D4",
+            },
+            "&:disabled": {
+              borderColor: colors.grey[100],
+              color: colors.grey[800],
+            },
+          },
+          "&.MuiIconButton-ghost": {
+            backgroundColor: "transparent",
+            border: "none",
+            color: colors.grey.A400,
+
+            "&:hover": {
+              backgroundColor: colors.grey[200],
+            },
+            "&:focus": {
+              backgroundColor: "transparent",
+              boxShadow: "0px 0px 0px 3px #D4D4D4",
+            },
+            "&:disabled": {
+              color: colors.grey[800],
+            },
+          },
+          "&.MuiIconButton-destructive": {
+            backgroundColor: colors.red[900],
+            border: "none",
+            color: "white",
+
+            "&:hover": {
+              backgroundColor: colors.red[900],
+            },
+            "&:focus": {
+              backgroundColor: colors.red[900],
+              boxShadow: `0px 0px 0px 3px ${colors.red[800]}`,
+            },
+            "&:disabled": {
+              backgroundColor: "#ee9292",
+              borderColor: "#ee9292",
+              color: "white",
+            },
+          },
+        },
+      },
+    },
+
+    /*     "&.MuiButton-contained": {
+      backgroundColor: colors.purple[700],
+      border: `2px solid ${colors.purple[700]}`,
+
+      "&:hover": {
+        backgroundColor: colors.purple[700],
+        borderColor: colors.purple[200],
+      },
+      "&:focus": {
+        backgroundColor: colors.purple[700],
+        borderColor: colors.grey[400], */
     // ... all component customizations
   },
 });

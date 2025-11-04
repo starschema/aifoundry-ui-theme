@@ -68,6 +68,7 @@ import {
   Container,
   InputAdornment,
 } from "@mui/material";
+import { Alarm as AlarmIcon } from "@mui/icons-material";
 
 export default function AllMaterialUIComponents() {
   const [age, setAge] = React.useState("");
@@ -263,6 +264,69 @@ export default function AllMaterialUIComponents() {
             <Button variant="contained" size="large">
               Large button
             </Button>
+          </Stack>
+        </Box>
+      </Paper>
+
+      <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
+        <Box sx={{ mb: 3 }}>
+          <Typography variant="h4" gutterBottom>
+            Icon Buttons
+          </Typography>
+          <Typography variant="h6" gutterBottom>
+            Primary Icon button
+          </Typography>
+          <Stack spacing={2} direction="row">
+            <IconButton>
+              <AlarmIcon />
+            </IconButton>
+            <IconButton disabled={true}>
+              <AlarmIcon />
+            </IconButton>
+          </Stack>
+          <Typography variant="h6" gutterBottom>
+            Secondary Icon button
+          </Typography>
+          <Stack spacing={2} direction="row">
+            <IconButton color="secondary">
+              <AlarmIcon />
+            </IconButton>
+            <IconButton color="secondary" disabled={true}>
+              <AlarmIcon />
+            </IconButton>
+          </Stack>
+          <Typography variant="h6" gutterBottom>
+            Outlined Icon button
+          </Typography>
+          <Stack spacing={2} direction="row">
+            <IconButton className="MuiIconButton-outlined">
+              <AlarmIcon />
+            </IconButton>
+            <IconButton className="MuiIconButton-outlined" disabled={true}>
+              <AlarmIcon />
+            </IconButton>
+          </Stack>
+          <Typography variant="h6" gutterBottom>
+            Ghost Icon button
+          </Typography>
+          <Stack spacing={2} direction="row">
+            <IconButton className="MuiIconButton-ghost">
+              <AlarmIcon />
+            </IconButton>
+            <IconButton className="MuiIconButton-ghost" disabled={true}>
+              <AlarmIcon />
+            </IconButton>
+          </Stack>
+          <Typography variant="h6" gutterBottom>
+            Destructive Icon button
+          </Typography>
+          <Stack spacing={2} direction="row">
+            <IconButton className="MuiIconButton-destructive">
+              <AlarmIcon />
+            </IconButton>
+            <IconButton className="MuiIconButton-destructive" disabled={true}>
+              <AlarmIcon />
+            </IconButton>
           </Stack>
         </Box>
       </Paper>

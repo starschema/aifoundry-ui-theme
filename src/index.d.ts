@@ -26,3 +26,14 @@ export declare module "@mui/material/Alert" {
     iconFlipped: true;
   }
 }
+
+export declare module "@mui/material/IconButton" {
+  interface IconButtonPropsSizeOverrides {
+    mini: true;
+  }
+
+  interface IconButtonPropsVariantOverrides {
+    ghost: true;
+    destructive: true;
+  }
+}
