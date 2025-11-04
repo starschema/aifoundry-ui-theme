@@ -980,6 +980,41 @@ export const getThemeOptions = (): ThemeOptions => ({
         },
       },
     },
+    MuiPagination: {
+      defaultProps: {
+        shape: "rounded",
+        variant: "text",
+        color: "standard",
+      },
+    },
+    MuiPaginationItem: {
+      defaultProps: {
+        disableFocusRipple: true,
+        disableRipple: true,
+        disableTouchRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          minHeight: 36,
+          width: 34,
+          padding: "7.5px 4px",
+          gap: 8,
+          "&.Mui-selected": {
+            backgroundColor: "rgba(255, 255, 255, 0.10)",
+            border: `1px solid ${colors.grey[200]}`,
+            boxShadow:
+              "0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10)",
+          },
+          "&:hover": {
+            backgroundColor: colors.grey[100],
+          },
+          "&.Mui-focusVisible": {
+            boxShadow: `0 0 0 3px ${colors.grey[300]}`,
+            backgroundColor: "transparent",
+          },
+        },
+      },
+    },
     // ... all component customizations
   },
 });
