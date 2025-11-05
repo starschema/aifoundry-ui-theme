@@ -1,5 +1,5 @@
 {
-  "files": ["./src/theme/theme.ts", "./src/index.js"],
+  "files": ["./src/index.js"],
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitAny": true,
