@@ -3,6 +3,7 @@ import { createTheme } from "@mui/material/styles";
 import {
   AccordionExpandIcon,
   AlertNeutralIcon,
+  BreadcrumbSeparatorIcon,
 } from "../components/CustomComponents";
 import React from "react";
 
@@ -1102,6 +1103,43 @@ export const getThemeOptions = (): ThemeOptions => ({
           "&.Mui-focusVisible": {
             boxShadow: `0 0 0 3px ${colors.grey[300]}`,
             backgroundColor: "transparent",
+          },
+        },
+      },
+    },
+    MuiBreadcrumbs: {
+      defaultProps: {
+        maxItems: 5,
+        itemsAfterCollapse: 2,
+        separator: React.createElement(BreadcrumbSeparatorIcon),
+      },
+      styleOverrides: {
+        root: {
+          fontSize: 14,
+          fontWeight: 400,
+          color: colors.grey[800],
+          a: {
+            color: "inherit",
+            textDecoration: "none",
+          },
+          p: {
+            color: "inherit",
+            fontWeight: "inherit",
+            fontSize: "inherit",
+          },
+          button: {
+            backgroundColor: "transparent",
+            margin: 0,
+          },
+          ".MuiBreadcrumbs-li:last-of-type": {
+            color: colors.purple[300],
+            fontWeight: "500",
+          },
+          ".MuiBreadcrumbs-separator": {
+            fontSize: 16,
+            svg: {
+              fontSize: "inherit",
+            },
           },
         },
       },
