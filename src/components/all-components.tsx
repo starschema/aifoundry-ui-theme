@@ -702,13 +702,13 @@ export default function AllMaterialUIComponents() {
             Breadcrumbs
           </Typography>
           <Breadcrumbs>
-            <Link underline="hover" color="inherit" href="#">
-              Home
-            </Link>
-            <Link underline="hover" color="inherit" href="#">
-              Category
-            </Link>
-            <Typography color="text.primary">Current Page</Typography>
+            <Link href="#">Home</Link>
+            <Link href="#">Category</Link>
+            <Link href="#">Category</Link>
+            <Link href="#">Category</Link>
+            <Link href="#">Category</Link>
+            <Link href="#">Category</Link>
+            <Typography>Current Page</Typography>
           </Breadcrumbs>
         </Box>
 
