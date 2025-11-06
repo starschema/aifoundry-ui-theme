@@ -1,1 +1,0 @@
-export { hclTheme } from "./theme/theme";

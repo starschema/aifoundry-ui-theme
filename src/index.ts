@@ -1,14 +1,11 @@
-import { Theme } from "@mui/material";
-
-export declare const hclTheme: Theme;
-
-export declare module "@mui/material/ToggleButtonGroup" {
+export { hclTheme } from "./theme/theme";
+declare module "@mui/material/ToggleButtonGroup" {
   interface ToggleButtonGroupPropsSizeOverrides {
     mini: true;
   }
 }
 
-export declare module "@mui/material/Button" {
+declare module "@mui/material/Button" {
   interface ButtonPropsSizeOverrides {
     mini: true;
   }
@@ -21,13 +18,13 @@ export declare module "@mui/material/Button" {
   }
 }
 
-export declare module "@mui/material/Alert" {
+declare module "@mui/material/Alert" {
   interface AlertPropsVariantOverrides {
     iconFlipped: true;
   }
 }
 
-export declare module "@mui/material/IconButton" {
+declare module "@mui/material/IconButton" {
   interface IconButtonPropsSizeOverrides {
     mini: true;
   }
@@ -38,8 +35,8 @@ export declare module "@mui/material/IconButton" {
   }
 }
 
-export declare module "@mui/material/PaginationItem" {
-  interface PaginationItemProps {
+declare module "@mui/material/PaginationItem" {
+  interface PaginationItemOwnProps {
     disableFocusRipple?: boolean;
     disableRipple?: boolean;
     disableTouchRipple?: boolean;
