@@ -67,6 +67,7 @@ import {
   Stack,
   Container,
   InputAdornment,
+  AvatarGroup,
 } from "@mui/material";
 import { Alarm as AlarmIcon } from "@mui/icons-material";
 
@@ -480,6 +481,14 @@ export default function AllMaterialUIComponents() {
             <Avatar sx={{ width: 24, height: 24 }}>S</Avatar>
             <Avatar>M</Avatar>
             <Avatar sx={{ width: 56, height: 56 }}>L</Avatar>
+          </Stack>
+          <Stack direction="row" spacing={2}>
+            <AvatarGroup>
+              <Avatar src="https://mui.com/static/images/avatar/1.jpg" />
+              <Avatar src="https://mui.com/static/images/avatar/2.jpg" />
+              <Avatar src="https://mui.com/static/images/avatar/3.jpg" />
+              <Avatar src="https://mui.com/static/images/avatar/4.jpg" />
+            </AvatarGroup>
           </Stack>
         </Box>
 
