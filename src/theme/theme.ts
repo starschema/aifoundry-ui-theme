@@ -689,6 +689,19 @@ export const getThemeOptions = (): ThemeOptions => ({
         },
       },
     },
+    MuiLinearProgress: {
+      styleOverrides: {
+        root: {
+          height: 8,
+          borderRadius: 4,
+          backgroundColor: colors.grey[200],
+          ".MuiLinearProgress-bar2": {
+            backgroundColor: colors.grey[200],
+          },
+        },
+      },
+    },
+
     MuiTooltip: {
       defaultProps: {
         arrow: true,
