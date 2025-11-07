@@ -174,7 +174,7 @@ export const getThemeOptions = (): ThemeOptions => ({
     },
   },
   typography: {
-    fontFamily: '"HclTechRoobert", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Lato", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontSize: "2.5rem",
       fontWeight: 700,
