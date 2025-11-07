@@ -1144,6 +1144,39 @@ export const getThemeOptions = (): ThemeOptions => ({
         },
       },
     },
+    MuiStepLabel: {
+      styleOverrides: {
+        root: {
+          ".MuiStepLabel-iconContainer ": {
+            "&.Mui-active": {
+              svg: {
+                fill: colors.purple[200],
+                // strokeWidth: 2,
+                stroke: colors.purple[600],
+                text: {
+                  stroke: "none",
+                },
+              },
+            },
+            "&.Mui-disabled": {
+              svg: {
+                fill: colors.grey[400],
+                // strokeWidth: 2,
+                stroke: colors.grey[600],
+                text: {
+                  stroke: "none",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    MuiStepIcon: {
+      defaultProps: {
+        viewBox: "-1 -1 26 26",
+      },
+    },
     // ... all component customizations
   },
 });
