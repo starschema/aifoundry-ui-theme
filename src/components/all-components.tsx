@@ -39,6 +39,7 @@ import {
   DialogActions,
   LinearProgress,
   CircularProgress,
+  Skeleton,
   Divider,
   List,
   ListItem,
@@ -840,6 +841,47 @@ export default function AllMaterialUIComponents() {
             </Table>
           </TableContainer>
         </Box>
+      </Paper>
+
+      {/* Skeleton Section */}
+      <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
+        <Typography variant="h4" gutterBottom sx={{ mb: 3 }}>
+          Skeletons
+        </Typography>
+        <Stack spacing={2}>
+          <Typography variant="h6" gutterBottom>
+            Basic Skeletons
+          </Typography>
+          <Stack spacing={1}>
+            <Skeleton variant="text" />
+            <Skeleton variant="circular" width={40} height={40} />
+            <Skeleton variant="rectangular" width={210} height={60} />
+            <Skeleton variant="rounded" width={210} height={60} />
+          </Stack>
+          <Typography variant="h6" gutterBottom>
+            Animations
+          </Typography>
+          <Stack direction="row" spacing={2} useFlexGap flexWrap="wrap">
+            <Box>
+              <Typography variant="body2" gutterBottom>
+                Pulse (default)
+              </Typography>
+              <Skeleton width={210} height={118} />
+            </Box>
+            <Box>
+              <Typography variant="body2" gutterBottom>
+                Wave
+              </Typography>
+              <Skeleton width={210} height={118} animation="wave" />
+            </Box>
+            <Box>
+              <Typography variant="body2" gutterBottom>
+                No Animation
+              </Typography>
+              <Skeleton width={210} height={118} animation={false} />
+            </Box>
+          </Stack>
+        </Stack>
       </Paper>
 
       {/* Accordion Section */}

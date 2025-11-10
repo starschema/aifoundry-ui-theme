@@ -1190,6 +1190,16 @@ export const getThemeOptions = (): ThemeOptions => ({
         viewBox: "-1 -1 26 26",
       },
     },
+    MuiSkeleton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+          "&.MuiSkeleton-wave::after": {
+            backgroundImage: `linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)`,
+          },
+        },
+      },
+    },
     // ... all component customizations
   },
 });
