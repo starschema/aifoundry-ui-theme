@@ -1200,6 +1200,15 @@ export const getThemeOptions = (): ThemeOptions => ({
         },
       },
     },
+    MuiDialog: {
+      styleOverrides: {
+        root: {
+          ".MuiDialog-paper": {
+            borderRadius: 8,
+          },
+        },
+      },
+    },
     // ... all component customizations
   },
 });
