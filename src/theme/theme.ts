@@ -4,6 +4,7 @@ import {
   AccordionExpandIcon,
   AlertNeutralIcon,
   BreadcrumbSeparatorIcon,
+  SnackbarTransition,
 } from "../components/CustomComponents";
 import React from "react";
 
@@ -543,7 +544,6 @@ export const getThemeOptions = (): ThemeOptions => ({
       styleOverrides: {
         rounded: {
           borderRadius: 12,
-          boxShadow: "0 2px 40px #00000014",
         },
       },
     },
@@ -1207,6 +1207,24 @@ export const getThemeOptions = (): ThemeOptions => ({
             borderRadius: 8,
           },
         },
+      },
+    },
+    MuiSnackbar: {
+      defaultProps: {
+        autoHideDuration: 4000,
+        slots: { transition: SnackbarTransition },
+        anchorOrigin: { horizontal: "right", vertical: "bottom" },
+      },
+    },
+    MuiSnackbarContent: {
+      defaultProps: {
+        elevation: 3,
+      },
+      styleOverrides: {
+        root: ({ theme }) => ({
+          backgroundColor: "#FFF",
+          color: theme.vars.palette.text.primary,
+        }),
       },
     },
     // ... all component customizations
