@@ -221,6 +221,9 @@ export default function AllMaterialUIComponents() {
         <Box sx={{ mb: 3 }}>
           <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
             <Button variant="contained">Regular button</Button>
+            <Button variant="contained" loading={true}>
+              Loading button
+            </Button>
             <Button variant="contained" disabled={true}>
               Disabled regular
             </Button>
@@ -331,6 +334,12 @@ export default function AllMaterialUIComponents() {
             </IconButton>
           </Stack>
         </Box>
+      </Paper>
+      <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
+        <Typography variant="h4" gutterBottom sx={{ mb: 3 }}>
+          Links
+        </Typography>
+        <Link href="#">Link</Link>
       </Paper>
       <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
         <Typography variant="h4" gutterBottom sx={{ mb: 3 }}>
@@ -454,19 +463,28 @@ export default function AllMaterialUIComponents() {
             Badges
           </Typography>
           <Stack direction="row" spacing={4}>
-            {colors.map((color) => (
-              <Badge key={color} badgeContent={4} color={color}>
-                <span>📧</span>
-              </Badge>
-            ))}
-            <Badge badgeContent={99} color="primary">
-              <span>📧</span>
+            <Badge
+              badgeContent={"Badge"}
+              color={"primary"}
+              variant={"contained"}
+            >
+              <AlarmIcon />
             </Badge>
-            <Badge badgeContent={100} max={99} color="secondary">
-              <span>📧</span>
+            <Badge
+              badgeContent={"Badge"}
+              color={"secondary"}
+              variant={"contained"}
+            >
+              <AlarmIcon />
             </Badge>
-            <Badge variant="dot" color="error">
-              <span>📧</span>
+            <Badge badgeContent={"Badge"} variant={"outlined"}>
+              <AlarmIcon />
+            </Badge>
+            <Badge badgeContent={"Badge"} variant={"ghost"}>
+              <AlarmIcon />
+            </Badge>
+            <Badge badgeContent={"Badge"} variant={"destructive"}>
+              <AlarmIcon />
             </Badge>
           </Stack>
         </Box>
@@ -476,12 +494,15 @@ export default function AllMaterialUIComponents() {
             Avatars
           </Typography>
           <Stack direction="row" spacing={2}>
-            <Avatar>H</Avatar>
-            <Avatar sx={{ bgcolor: "primary.main" }}>P</Avatar>
+            <Avatar>CN</Avatar>
+            <Avatar variant="rounded" sx={{ bgcolor: "primary.main" }}>
+              CN
+            </Avatar>
             <Avatar src="https://mui.com/static/images/avatar/1.jpg" />
-            <Avatar sx={{ width: 24, height: 24 }}>S</Avatar>
-            <Avatar>M</Avatar>
-            <Avatar sx={{ width: 56, height: 56 }}>L</Avatar>
+            <Avatar
+              variant="rounded"
+              src="https://mui.com/static/images/avatar/1.jpg"
+            />
           </Stack>
           <Stack direction="row" spacing={2}>
             <AvatarGroup>
@@ -498,7 +519,7 @@ export default function AllMaterialUIComponents() {
             Tooltips
           </Typography>
           <Stack direction="row" spacing={2}>
-            <Tooltip title="Delete">
+            <Tooltip title="Delete" open={true}>
               <IconButton>
                 <span>🗑️</span>
               </IconButton>

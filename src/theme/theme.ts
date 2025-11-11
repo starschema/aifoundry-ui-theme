@@ -379,7 +379,7 @@ export const getThemeOptions = (): ThemeOptions => ({
               backgroundColor: colors.purple[700],
               boxShadow: `0px 0px 0px 3px ${colors.grey[400]}`,
             },
-            "&:disabled": {
+            "&:not(.MuiButton-loading):disabled": {
               backgroundColor: colors.purple[200],
               color: "white",
             },
@@ -721,6 +721,7 @@ export const getThemeOptions = (): ThemeOptions => ({
       styleOverrides: {
         tooltip: {
           backgroundColor: colors.grey.A400,
+          fontSize: "12px",
           padding: "6px 8px",
         },
         arrow: {
@@ -1225,6 +1226,138 @@ export const getThemeOptions = (): ThemeOptions => ({
           backgroundColor: "#FFF",
           color: theme.vars.palette.text.primary,
         }),
+      },
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: "#193CB8",
+          fontSize: "14px",
+          fontWeight: 500,
+          textDecoration: "none",
+          "&:hover": {
+            textDecoration: "underline",
+          },
+          "&:focus": {
+            fontSize: "16px",
+            textDecoration: "underline",
+          },
+        },
+      },
+    },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: colors.grey[100],
+          color: colors.grey.A400,
+          fontSize: "14px",
+
+          "&.MuiAvatar-rounded": {
+            backgroundColor: colors.grey[100],
+            borderRadius: "10px",
+            color: colors.grey.A400,
+          },
+        },
+      },
+    },
+    MuiBadge: {
+      styleOverrides: {
+        root: {
+          "& .MuiBadge-badge": {
+            backgroundColor: "white",
+            borderRadius: "4px",
+            boxShadow: "none",
+            textTransform: "none",
+            fontSize: "12px",
+            fontWeight: 500,
+          },
+          "& .MuiBadge-badge:hover": {
+            boxShadow: "none",
+          },
+          "& .MuiBadge-contained": {
+            backgroundColor: colors.purple[700],
+            border: "none",
+
+            "&:hover": {
+              backgroundColor: colors.purple[700],
+              boxShadow: `0px 0px 0px 3px ${colors.purple[200]}`,
+            },
+            "&:focus": {
+              backgroundColor: colors.purple[700],
+              boxShadow: `0px 0px 0px 3px ${colors.grey[400]}`,
+            },
+            "&:not(.MuiBadge-loading):disabled": {
+              backgroundColor: colors.purple[200],
+              color: "white",
+            },
+          },
+          "& .MuiBadge-contained.MuiBadge-colorSecondary": {
+            backgroundColor: "white",
+            border: "none",
+            boxShadow: `0px 0px 0px 1px ${colors.purple[700]}`,
+            color: colors.grey.A400,
+            "&:hover": {
+              boxShadow: `0px 0px 0px 2px ${colors.purple[700]}`,
+            },
+            "&:focus": {
+              boxShadow: `0px 0px 0px 3px ${colors.purple[700]}`,
+            },
+            "&:disabled": {
+              backgroundColor: colors.grey[100],
+              boxShadow: "none",
+              color: colors.grey[800],
+            },
+          },
+          "& .MuiBadge-outlined": {
+            backgroundColor: "white",
+            border: `1px solid ${colors.grey[200]}`,
+            boxShadow: "0px 1px 2px -1px #0000001A",
+            color: colors.grey.A400,
+
+            "&:hover": {
+              boxShadow: "0px 1px 3px 0px #0000001A",
+            },
+            "&:focus": {
+              boxShadow: "0px 0px 0px 3px #D4D4D4",
+            },
+            "&:disabled": {
+              borderColor: colors.grey[100],
+              color: colors.grey[800],
+            },
+          },
+          "& .MuiBadge-ghost": {
+            //backgroundColor: colors.purple[700],
+            border: "3px solid transparent",
+
+            "&:hover": {
+              backgroundColor: colors.grey[200],
+            },
+            "&:focus": {
+              backgroundColor: "transparent",
+              boxShadow: `0px 0px 0px 3px ${colors.grey[200]}`,
+            },
+            "&:disabled": {
+              color: colors.grey[800],
+            },
+          },
+          "& .MuiBadge-destructive": {
+            backgroundColor: colors.red[900],
+            border: "none",
+            color: "white",
+
+            "&:hover": {
+              backgroundColor: colors.red[900],
+            },
+            "&:focus": {
+              backgroundColor: colors.red[900],
+              boxShadow: `0px 0px 0px 3px ${colors.red[800]}`,
+            },
+            "&:disabled": {
+              backgroundColor: "#ee9292",
+              color: "white",
+            },
+          },
+        },
       },
     },
     // ... all component customizations

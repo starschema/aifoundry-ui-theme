@@ -42,3 +42,12 @@ declare module "@mui/material/PaginationItem" {
     disableTouchRipple?: boolean;
   }
 }
+
+export declare module "@mui/material/Badge" {
+  interface BadgePropsVariantOverrides {
+    contained: true;
+    outlined: true;
+    ghost: true;
+    destructive: true;
+  }
+}
