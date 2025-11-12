@@ -1357,6 +1357,15 @@ export const getThemeOptions = (): ThemeOptions => ({
               color: "white",
             },
           },
+    MuiDrawer: {
+      defaultProps: {
+        anchor: "bottom",
+      },
+      styleOverrides: {
+        paper: {
+          borderTopRightRadius: 8,
+          borderTopLeftRadius: 8,
+          padding: 8,
         },
       },
     },

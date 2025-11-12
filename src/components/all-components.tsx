@@ -69,6 +69,7 @@ import {
   Container,
   InputAdornment,
   AvatarGroup,
+  Drawer,
 } from "@mui/material";
 import { Alarm as AlarmIcon } from "@mui/icons-material";
 
@@ -80,6 +81,7 @@ export default function AllMaterialUIComponents() {
   const [toggleValue, setToggleValue] = React.useState<string | null>("left");
   const [snackbarOpen, setSnackbarOpen] = React.useState(false);
   const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   const colors = [
     "primary",
@@ -788,6 +790,70 @@ export default function AllMaterialUIComponents() {
             <BottomNavigationAction label="Favorites" icon={<span>❤️</span>} />
             <BottomNavigationAction label="Settings" icon={<span>⚙️</span>} />
           </BottomNavigation>
+        </Box>
+
+        <Box sx={{ mb: 3 }}>
+          <Typography variant="h6" gutterBottom>
+            Drawer (Navigation Menu)
+          </Typography>
+          <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
+            <Button variant="contained" onClick={() => setDrawerOpen(true)}>
+              Open Drawer
+            </Button>
+          </Stack>
+          <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+            <Box>
+              <Typography
+                variant="h6"
+                sx={{ p: 2, pb: 0, textAlign: "center" }}
+              >
+                Drawer Menu
+              </Typography>
+              <Typography variant="subtitle1" sx={{ textAlign: "center" }}>
+                You can put here anything
+              </Typography>
+              <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
+                <Typography variant="h4" gutterBottom sx={{ mb: 3 }}>
+                  Form items
+                </Typography>
+
+                <Box sx={{ mb: 3 }}>
+                  <InputLabel>Input</InputLabel>
+                  <Input></Input>
+                </Box>
+                <Box>
+                  <Stack spacing={2}>
+                    <FormControl fullWidth>
+                      <FormLabel>Select</FormLabel>
+                      <Select
+                        value={age}
+                        onChange={(e) => setAge(e.target.value)}
+                        displayEmpty
+                      >
+                        <MenuItem value={1}>Item 1</MenuItem>
+                        <MenuItem value={2}>Item 2</MenuItem>
+                        <MenuItem value={3}>Item 3</MenuItem>
+                        <MenuItem value={4}>Item 4</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Stack>
+                </Box>
+                <Box sx={{ mb: 3 }}>
+                  <Box sx={{ mb: 3 }}>
+                    <Stack>
+                      <FormControlLabel
+                        control={<Checkbox defaultChecked />}
+                        label={"checkbox"}
+                      />
+                    </Stack>
+                  </Box>
+                  <Stack>
+                    <FormControlLabel control={<Switch />} label="switch " />
+                  </Stack>
+                </Box>
+              </Paper>
+            </Box>
+          </Drawer>
         </Box>
       </Paper>
 
