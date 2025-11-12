@@ -1357,6 +1357,9 @@ export const getThemeOptions = (): ThemeOptions => ({
               color: "white",
             },
           },
+        },
+      },
+    },
     MuiDrawer: {
       defaultProps: {
         anchor: "bottom",
