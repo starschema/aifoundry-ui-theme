@@ -956,14 +956,14 @@ export const getThemeOptions = (): ThemeOptions => ({
         expandIcon: React.createElement(AccordionExpandIcon),
       },
       styleOverrides: {
-        root: ({ theme }) => ({
+        root: {
           borderRadius: "8px",
           fontWeight: 500,
           "&.Mui-focusVisible": {
             boxShadow: `0 0 0 3px ${colors.grey[300]}`,
             backgroundColor: "transparent",
           },
-        }),
+        },
         expandIconWrapper: ({ theme }) => ({
           color: theme.vars.palette.text.primary,
         }),
