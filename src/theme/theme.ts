@@ -1372,6 +1372,25 @@ export const getThemeOptions = (): ThemeOptions => ({
         },
       },
     },
+    MuiSlider: {
+      styleOverrides: {
+        root: {
+          height: 6,
+          "&.MuiSlider-vertical": {
+            height: "100%",
+          },
+          ".MuiSlider-thumb": {
+            backgroundColor: "#FFF",
+            outline: "1px solid",
+            width: 12,
+            height: 12,
+          },
+          ".MuiSlider-rail": {
+            backgroundColor: colors.grey[400],
+          },
+        },
+      },
+    },
     // ... all component customizations
   },
 });
