@@ -77,6 +77,9 @@ export default function AllMaterialUIComponents() {
   const [age, setAge] = React.useState("");
   const [radioValue, setRadioValue] = React.useState("female");
   const [sliderValue, setSliderValue] = React.useState(30);
+  const [rangeSliderValue, setrangeSliderValue] = React.useState<number[]>([
+    5, 20,
+  ]);
   const [tabValue, setTabValue] = React.useState(0);
   const [toggleValue, setToggleValue] = React.useState<string | null>("left");
   const [snackbarOpen, setSnackbarOpen] = React.useState(false);
@@ -348,40 +351,63 @@ export default function AllMaterialUIComponents() {
           Form items
         </Typography>
 
-        <Box sx={{ mb: 3 }}>
-          <InputLabel>Input</InputLabel>
-          <Input></Input>
-        </Box>
-        <Box>
-          <Stack spacing={2}>
-            <FormControl fullWidth>
-              <FormLabel>Select</FormLabel>
-              <Select
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                displayEmpty
-              >
-                <MenuItem value={1}>Item 1</MenuItem>
-                <MenuItem value={2}>Item 2</MenuItem>
-                <MenuItem value={3}>Item 3</MenuItem>
-                <MenuItem value={4}>Item 4</MenuItem>
-              </Select>
-            </FormControl>
-          </Stack>
-        </Box>
-        <Box sx={{ mb: 3 }}>
-          <Box sx={{ mb: 3 }}>
-            <Stack>
-              <FormControlLabel
-                control={<Checkbox defaultChecked />}
-                label={"checkbox"}
-              />
-            </Stack>
-          </Box>
+        <Stack direction="row">
           <Stack>
-            <FormControlLabel control={<Switch />} label="switch " />
+            <Box sx={{ mb: 3 }}>
+              <InputLabel>Input</InputLabel>
+              <Input></Input>
+            </Box>
+            <Box>
+              <Stack spacing={2}>
+                <FormControl fullWidth>
+                  <FormLabel>Select</FormLabel>
+                  <Select
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    displayEmpty
+                  >
+                    <MenuItem value={1}>Item 1</MenuItem>
+                    <MenuItem value={2}>Item 2</MenuItem>
+                    <MenuItem value={3}>Item 3</MenuItem>
+                    <MenuItem value={4}>Item 4</MenuItem>
+                  </Select>
+                </FormControl>
+              </Stack>
+            </Box>
+            <Box sx={{ mb: 3 }}>
+              <Box sx={{ mb: 3 }}>
+                <Stack>
+                  <FormControlLabel
+                    control={<Checkbox defaultChecked />}
+                    label={"checkbox"}
+                  />
+                </Stack>
+              </Box>
+              <Stack>
+                <FormControlLabel control={<Switch />} label="switch " />
+              </Stack>
+            </Box>
+            <Box sx={{ mb: 3 }}>
+              <Stack sx={{ width: 200 }}>
+                <Slider
+                  value={sliderValue}
+                  onChange={(_, value) => setSliderValue(value)}
+                />
+                <Slider
+                  value={rangeSliderValue}
+                  onChange={(_, value) => setrangeSliderValue(value)}
+                />
+              </Stack>
+            </Box>
           </Stack>
-        </Box>
+          <Stack sx={{ height: 300 }}>
+            <Slider
+              value={sliderValue}
+              onChange={(_, value) => setSliderValue(value)}
+              orientation="vertical"
+            />
+          </Stack>
+        </Stack>
       </Paper>
 
       {/* Data Display Section */}
