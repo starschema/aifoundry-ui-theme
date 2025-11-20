@@ -6,6 +6,7 @@ import {
   BreadcrumbSeparatorIcon,
   SnackbarTransition,
 } from "../components/CustomComponents";
+import type {} from "@mui/x-date-pickers/themeAugmentation";
 import React from "react";
 import { Timer10 } from "@mui/icons-material";
 
@@ -1606,6 +1607,59 @@ export const getThemeOptions = (): ThemeOptions => ({
           borderTopRightRadius: 8,
           borderTopLeftRadius: 8,
           padding: 8,
+        },
+      },
+    },
+    MuiPickersTextField: {
+      styleOverrides: {
+        root: {
+          fontSize: 14,
+        },
+      },
+    },
+    MuiPickersInputBase: {
+      styleOverrides: {
+        root: {
+          fontSize: 14,
+        },
+      },
+    },
+    MuiInputAdornment: {
+      defaultProps: {
+        // variant: "outlined",
+      },
+      styleOverrides: {
+        root: {},
+      },
+    },
+    MuiDatePicker: {
+      defaultProps: {
+        slotProps: {
+          openPickerButton: {
+            // variant: "ghost"
+            className: "MuiIconButton-ghost",
+          },
+          inputAdornment: {
+            // component: DatePickerInputAdornment,
+          },
+        },
+      },
+    },
+    MuiTimePicker: {
+      defaultProps: {
+        slotProps: {
+          openPickerButton: {
+            className: "MuiIconButton-ghost",
+          },
+        },
+      },
+    },
+    MuiDateTimePicker: {
+      defaultProps: {
+        slotProps: {
+          openPickerButton: {
+            className: "MuiIconButton-ghost",
+          },
         },
       },
     },
