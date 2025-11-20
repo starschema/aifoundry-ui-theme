@@ -352,8 +352,8 @@ export default function AllMaterialUIComponents() {
           Form items
         </Typography>
 
-        <Stack direction="row">
-          <Stack sx={{ minWidth: "50%" }}>
+        <Stack direction="row" spacing={2} flexWrap="wrap">
+          <Stack sx={{ minWidth: "49%" }}>
             <Box sx={{ mb: 3 }}>
               <InputLabel>Input</InputLabel>
               <Input></Input>
@@ -373,6 +373,8 @@ export default function AllMaterialUIComponents() {
               <InputLabel>Input Small</InputLabel>
               <Input size="small"></Input>
             </Box>
+          </Stack>
+          <Stack sx={{ minWidth: "49%" }}>
             <Box sx={{ mb: 3 }}>
               <InputLabel>Textarea</InputLabel>
               <TextareaAutosize />
@@ -381,92 +383,92 @@ export default function AllMaterialUIComponents() {
               <InputLabel>Textarea Disabled</InputLabel>
               <TextareaAutosize disabled={true} />
             </Box>
+          </Stack>
+          <Stack sx={{ minWidth: "49%" }}>
             <Box>
-              <Stack spacing={2}>
-                <FormControl fullWidth>
-                  <FormLabel>Select</FormLabel>
-                  <Select
-                    value={age}
-                    onChange={(e) => setAge(e.target.value)}
-                    displayEmpty
-                  >
-                    <MenuItem value={1}>Item 1</MenuItem>
-                    <MenuItem value={2}>Item 2</MenuItem>
-                    <MenuItem value={3}>Item 3</MenuItem>
-                    <MenuItem value={4}>Item 4</MenuItem>
-                  </Select>
-                </FormControl>
-              </Stack>
+              <FormControl fullWidth>
+                <FormLabel>Select</FormLabel>
+                <Select
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                  displayEmpty
+                >
+                  <MenuItem value={1}>Item 1</MenuItem>
+                  <MenuItem value={2}>Item 2</MenuItem>
+                  <MenuItem value={3}>Item 3</MenuItem>
+                  <MenuItem value={4}>Item 4</MenuItem>
+                </Select>
+              </FormControl>
             </Box>
+          </Stack>
+          <Stack sx={{ minWidth: "49%" }}>
             <Box sx={{ mb: 3 }}>
-              <Box sx={{ mb: 3 }}>
-                <Stack>
-                  <FormControl>
-                    <FormLabel id="radio-regular">Radio</FormLabel>
-                    <RadioGroup
-                      aria-labelledby="radio-regular"
-                      name="controlled-radio-buttons-group"
-                      value={"1"}
-                    >
-                      <FormControlLabel
-                        value="1"
-                        control={<Radio />}
-                        label="Radio 1"
-                      />
-                      <FormControlLabel
-                        value="2"
-                        control={<Radio />}
-                        label="Radio 2"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel id="radio-error">Radio</FormLabel>
-                    <RadioGroup
-                      aria-labelledby="radio-error"
-                      name="controlled-radio-buttons-group"
-                      value={"1"}
-                    >
-                      <FormControlLabel
-                        value="1"
-                        control={<Radio />}
-                        label="Radio 1"
-                      />
-                      <FormControlLabel
-                        value="2"
-                        control={<Radio />}
-                        label="Radio 2"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Stack>
-              </Box>
-              <Stack>
-                <FormControlLabel
-                  control={<Checkbox checked={true} />}
-                  label="checkbox "
-                />
-                <FormControlLabel
-                  control={<Checkbox disabled={true} />}
-                  label="Checkbox disabled "
-                />
-                <FormControlLabel
-                  control={<Checkbox disabled={true} checked={true} />}
-                  label="Checkbox checked disabled "
-                />
-              </Stack>
-              <Stack>
-                <FormControlLabel control={<Switch />} label="switch " />
-                <FormControlLabel
-                  control={<Switch disabled={true} />}
-                  label="switch disabled "
-                />
-                <FormControlLabel
-                  control={<Switch disabled={true} checked={true} />}
-                  label="switch checked disabled "
-                />
-              </Stack>
+              <FormControl>
+                <FormLabel id="radio-regular">Radio</FormLabel>
+                <RadioGroup
+                  aria-labelledby="radio-regular"
+                  name="controlled-radio-buttons-group"
+                  value={"1"}
+                >
+                  <FormControlLabel
+                    value="1"
+                    control={<Radio />}
+                    label="Radio 1"
+                  />
+                  <FormControlLabel
+                    value="2"
+                    control={<Radio />}
+                    label="Radio 2"
+                  />
+                </RadioGroup>
+              </FormControl>
+              <FormControl>
+                <FormLabel id="radio-error">Radio</FormLabel>
+                <RadioGroup
+                  aria-labelledby="radio-error"
+                  name="controlled-radio-buttons-group"
+                  value={"1"}
+                >
+                  <FormControlLabel
+                    value="1"
+                    control={<Radio />}
+                    label="Radio 1"
+                  />
+                  <FormControlLabel
+                    value="2"
+                    control={<Radio />}
+                    label="Radio 2"
+                  />
+                </RadioGroup>
+              </FormControl>
             </Box>
+          </Stack>
+          <Stack sx={{ minWidth: "49%" }}>
+            <Stack>
+              <FormControlLabel
+                control={<Checkbox checked={true} />}
+                label="checkbox "
+              />
+              <FormControlLabel
+                control={<Checkbox disabled={true} />}
+                label="Checkbox disabled "
+              />
+              <FormControlLabel
+                control={<Checkbox disabled={true} checked={true} />}
+                label="Checkbox checked disabled "
+              />
+            </Stack>
+            <Stack>
+              <FormControlLabel control={<Switch />} label="switch " />
+              <FormControlLabel
+                control={<Switch disabled={true} />}
+                label="switch disabled "
+              />
+              <FormControlLabel
+                control={<Switch disabled={true} checked={true} />}
+                label="switch checked disabled "
+              />
+            </Stack>
             <Box sx={{ mb: 3 }}>
               <Stack sx={{ width: 200 }}>
                 <Slider
