@@ -69,9 +69,10 @@ import {
   Container,
   InputAdornment,
   AvatarGroup,
+  TextareaAutosize,
   Drawer,
 } from "@mui/material";
-import { Alarm as AlarmIcon } from "@mui/icons-material";
+import { Alarm as AlarmIcon, Check } from "@mui/icons-material";
 
 export default function AllMaterialUIComponents() {
   const [age, setAge] = React.useState("");
@@ -352,10 +353,33 @@ export default function AllMaterialUIComponents() {
         </Typography>
 
         <Stack direction="row">
-          <Stack>
+          <Stack sx={{ minWidth: "50%" }}>
             <Box sx={{ mb: 3 }}>
               <InputLabel>Input</InputLabel>
               <Input></Input>
+
+              <InputLabel>Input Error</InputLabel>
+              <Input error={true}></Input>
+
+              <InputLabel>Input Disabled</InputLabel>
+              <Input disabled={true}></Input>
+
+              <InputLabel>Input Large</InputLabel>
+              <Input size="large"></Input>
+
+              <InputLabel>Input Medium</InputLabel>
+              <Input size="medium"></Input>
+
+              <InputLabel>Input Small</InputLabel>
+              <Input size="small"></Input>
+            </Box>
+            <Box sx={{ mb: 3 }}>
+              <InputLabel>Textarea</InputLabel>
+              <TextareaAutosize />
+              <InputLabel>Textarea Error</InputLabel>
+              <TextareaAutosize className="error" />
+              <InputLabel>Textarea Disabled</InputLabel>
+              <TextareaAutosize disabled={true} />
             </Box>
             <Box>
               <Stack spacing={2}>
@@ -377,14 +401,70 @@ export default function AllMaterialUIComponents() {
             <Box sx={{ mb: 3 }}>
               <Box sx={{ mb: 3 }}>
                 <Stack>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label={"checkbox"}
-                  />
+                  <FormControl>
+                    <FormLabel id="radio-regular">Radio</FormLabel>
+                    <RadioGroup
+                      aria-labelledby="radio-regular"
+                      name="controlled-radio-buttons-group"
+                      value={"1"}
+                    >
+                      <FormControlLabel
+                        value="1"
+                        control={<Radio />}
+                        label="Radio 1"
+                      />
+                      <FormControlLabel
+                        value="2"
+                        control={<Radio />}
+                        label="Radio 2"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel id="radio-error">Radio</FormLabel>
+                    <RadioGroup
+                      aria-labelledby="radio-error"
+                      name="controlled-radio-buttons-group"
+                      value={"1"}
+                    >
+                      <FormControlLabel
+                        value="1"
+                        control={<Radio />}
+                        label="Radio 1"
+                      />
+                      <FormControlLabel
+                        value="2"
+                        control={<Radio />}
+                        label="Radio 2"
+                      />
+                    </RadioGroup>
+                  </FormControl>
                 </Stack>
               </Box>
               <Stack>
+                <FormControlLabel
+                  control={<Checkbox checked={true} />}
+                  label="checkbox "
+                />
+                <FormControlLabel
+                  control={<Checkbox disabled={true} />}
+                  label="Checkbox disabled "
+                />
+                <FormControlLabel
+                  control={<Checkbox disabled={true} checked={true} />}
+                  label="Checkbox checked disabled "
+                />
+              </Stack>
+              <Stack>
                 <FormControlLabel control={<Switch />} label="switch " />
+                <FormControlLabel
+                  control={<Switch disabled={true} />}
+                  label="switch disabled "
+                />
+                <FormControlLabel
+                  control={<Switch disabled={true} checked={true} />}
+                  label="switch checked disabled "
+                />
               </Stack>
             </Box>
             <Box sx={{ mb: 3 }}>

@@ -348,6 +348,31 @@ export const getThemeOptions = (): ThemeOptions => ({
           font-display: swap;
           src: url('/assets/fonts/hcltechroobert-heavyitalic.woff2') format('woff2');
         }
+        /* TextareaAutosize Overrides */
+        .MuiBox-root textarea {
+          width: 100%;
+          min-height: 76px;
+          border: 1px solid #E5E5E5;
+          border-radius: 4px;
+          box-shadow: 0px 1px 2px 0px #0000000D;
+          padding: 8px;
+        }
+        .MuiBox-root textarea:focus {
+          box-shadow: 0px 0px 0px 3px #D4D4D4;
+          outline: 0;
+        }
+
+        .MuiBox-root textarea.error {
+          border-color: #DC2626;
+          box-shadow: 0px 0px 0px 3px #FCA5A5;
+          outline: 0;
+        }
+
+        .MuiBox-root textarea:disabled {
+          background-color: transparent;
+          border-color: #E5E5E5;
+          color: #B5B5B5;
+        }
       `,
     },
     MuiButton: {
@@ -753,7 +778,7 @@ export const getThemeOptions = (): ThemeOptions => ({
       styleOverrides: {
         root: {
           border: `1px solid ${colors.grey[200]}`,
-          borderRadius: "8px",
+          borderRadius: "6px",
           color: colors.grey.A400,
           fontSize: "14px",
           padding: "2.5px 7.5px",
@@ -765,11 +790,58 @@ export const getThemeOptions = (): ThemeOptions => ({
             display: "none",
           },
           "&.Mui-focused": {
-            borderColor: "transparent",
-            background:
-              "linear-gradient(to right, white, white),linear-gradient(to right, #7ABEF7 14.04% , #572AC2 83.84%)",
-            backgroundClip: "padding-box, border-box",
-            backgroundOrigin: "padding-box, border-box",
+            borderColor: colors.grey.A400,
+            boxShadow: "0px 0px 0px 3px #D4D4D4",
+          },
+          "&.Mui-error": {
+            borderColor: colors.red[900],
+
+            "&.Mui-focused": {
+              boxShadow: `0px 0px 0px 3px ${colors.red[800]}`,
+            },
+          },
+          "&:has(.MuiInputBase-inputSizeSmall)": {
+            height: "24px",
+          },
+          "&:has(.MuiInputBase-inputSizeMedium)": {
+            height: "32px",
+          },
+          "&:has(.MuiInputBase-inputSizeLarge)": {
+            height: "40px",
+          },
+        },
+      },
+    },
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          width: "16px",
+          height: "16px",
+          border: `1px solid ${colors.grey.A400}`,
+          boxShadow: "0px 1px 2px 0px #0000000D",
+          color: colors.grey.A400,
+          margin: "8px",
+          "&.Mui-checked": {
+            color: colors.grey.A400,
+          },
+          "&.Mui-focused": {
+            backgroundColor: "transparent",
+            borderColor: colors.grey.A400,
+            boxShadow: "0px 0px 0px 3px #D4D4D4",
+          },
+          "&.Mui-error": {
+            borderColor: colors.red[900],
+
+            "&.Mui-focused": {
+              boxShadow: `0px 0px 0px 3px ${colors.red[800]}`,
+            },
+          },
+          "&.error": {
+            borderColor: colors.red[900],
+
+            "&.Mui-focused": {
+              boxShadow: `0px 0px 0px 3px ${colors.red[800]}`,
+            },
           },
         },
       },
@@ -864,26 +936,39 @@ export const getThemeOptions = (): ThemeOptions => ({
     MuiSwitch: {
       styleOverrides: {
         root: {
-          width: "26px",
-          height: "16px",
-          backgroundColor: colors.grey[100],
+          width: "33px",
+          height: "18px",
+          //backgroundColor: colors.grey[100],
           borderRadius: "25px",
           padding: 0,
+          margin: "8px",
         },
         switchBase: {
+          backgroundColor: colors.grey.A400,
           padding: 1,
           "&.Mui-checked": {
-            transform: "translateX(10px)",
+            transform: "translateX(15px)",
             backgroundColor: colors.purple[800],
             "& + .MuiSwitch-track": {
               opacity: 1,
             },
           },
+          "&.Mui-disabled": {
+            backgroundColor: colors.grey[200],
+            "&.Mui-checked": {
+              backgroundColor: colors.grey[400],
+            },
+          },
+          "&.Mui-checked.Mui-disabled": {
+            backgroundColor: colors.grey[400],
+          },
         },
+        track: {},
         thumb: {
-          width: 14,
-          height: 14,
+          width: 16,
+          height: 16,
           backgroundColor: "white",
+          border: 0,
         },
       },
     },
