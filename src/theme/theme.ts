@@ -7,6 +7,7 @@ import {
   SnackbarTransition,
 } from "../components/CustomComponents";
 import React from "react";
+import { Timer10 } from "@mui/icons-material";
 
 // HCL Color Palette - exported for use in custom components
 export const colors = {
@@ -815,19 +816,54 @@ export const getThemeOptions = (): ThemeOptions => ({
     MuiRadio: {
       styleOverrides: {
         root: {
-          width: "16px",
-          height: "16px",
-          border: `1px solid ${colors.grey.A400}`,
-          boxShadow: "0px 1px 2px 0px #0000000D",
+          position: "relative",
+          width: "30px",
+          height: "30px",
+          //border: `1px solid ${colors.grey.A400}`,
+          //boxShadow: "0px 1px 2px 0px #0000000D",
           color: colors.grey.A400,
-          margin: "8px",
+          padding: 0,
+          margin: 0,
+          svg: {
+            display: "none",
+          },
+
+          "&:before": {
+            content: '""',
+            display: "block",
+            width: "16px",
+            height: "16px",
+            border: "1px solid #D4D4D4",
+            boxShadow: "0px 1px 2px 0px #0000000D",
+            borderRadius: "50%",
+          },
+          "&:after": {
+            position: "absolute",
+            top: "11px",
+            left: "11px",
+            content: '""',
+            display: "block",
+            width: "8px",
+            height: "8px",
+            borderRadius: "50%",
+          },
+          "&.error:before": {
+            borderColor: colors.red[900],
+          },
           "&.Mui-checked": {
-            color: colors.grey.A400,
+            "&:after": {
+              backgroundColor: colors.grey.A400,
+            },
+          },
+          "&.error.Mui-checked": {
+            "&:after": {
+              backgroundColor: colors.red[900],
+            },
           },
           "&.Mui-focused": {
             backgroundColor: "transparent",
             borderColor: colors.grey.A400,
-            boxShadow: "0px 0px 0px 3px #D4D4D4",
+            boxShadow: `0 0 0 3px ${colors.grey[300]}`,
           },
           "&.Mui-error": {
             borderColor: colors.red[900],
@@ -903,23 +939,76 @@ export const getThemeOptions = (): ThemeOptions => ({
       },
     },
     MuiCheckbox: {
+      defaultProps: {
+        disableFocusRipple: true,
+        disableRipple: true,
+        disableTouchRipple: true,
+      },
       styleOverrides: {
         root: {
-          /* border: `1px solid ${colors.grey[200]}`,
-          borderRadius: "4px",
-          marginLeft: "10px",
-          padding: "6px", */
+          position: "relative",
+          width: "30px",
+          height: "30px",
+          margin: "5px",
+          padding: 0,
+          backgroundColor: "transparent",
 
-          "&.Mui-checked": {
-            //backgroundColor: colors.purple[800],
+          /* svg: {
+            display: "none",
+          }, */
+
+          "& svg path": {
+            display: "none",
           },
 
           "& .MuiSvgIcon-root": {
-            //display: "none",
-            //border: `1px solid ${colors.grey[200]}`,
+            width: "16px",
+            height: "16px",
+            border: "1px solid #D4D4D4",
+            boxShadow: "0px 1px 2px 0px #0000000D",
             borderRadius: "4px",
-            width: "18px",
-            height: "18px",
+          },
+
+          "&.Mui-checked  .MuiSvgIcon-root": {
+            backgroundColor: colors.purple[800],
+            borderColor: colors.purple[800],
+          },
+
+          "&.error  .MuiSvgIcon-root": {
+            borderColor: colors.red[900],
+          },
+
+          "&.Mui-checked.error  .MuiSvgIcon-root": {
+            backgroundColor: colors.red[900],
+          },
+
+          "&.Mui-checked.Mui-disabled  .MuiSvgIcon-root": {
+            backgroundColor: colors.grey[800],
+            borderColor: colors.grey[800],
+          },
+
+          "&:before": {
+            position: "absolute",
+            top: "11px",
+            left: "16px",
+            content: '""',
+            display: "block",
+            width: "1px",
+            height: "8px",
+            backgroundColor: "white",
+            transform: "rotate(45deg)",
+          },
+
+          "&:after": {
+            position: "absolute",
+            top: "14px",
+            left: "12px",
+            content: '""',
+            display: "block",
+            width: "1px",
+            height: "5px",
+            backgroundColor: "white",
+            transform: "rotate(135deg)",
           },
         },
       },
@@ -938,7 +1027,6 @@ export const getThemeOptions = (): ThemeOptions => ({
         root: {
           width: "33px",
           height: "18px",
-          //backgroundColor: colors.grey[100],
           borderRadius: "25px",
           padding: 0,
           margin: "8px",
@@ -953,14 +1041,11 @@ export const getThemeOptions = (): ThemeOptions => ({
               opacity: 1,
             },
           },
-          "&.Mui-disabled": {
-            backgroundColor: colors.grey[200],
-            "&.Mui-checked": {
-              backgroundColor: colors.grey[400],
-            },
-          },
           "&.Mui-checked.Mui-disabled": {
-            backgroundColor: colors.grey[400],
+            backgroundColor: "#D4D4D4",
+          },
+          "&.Mui-disabled.Mui-checked": {
+            backgroundColor: "#D4D4D4",
           },
         },
         track: {},
