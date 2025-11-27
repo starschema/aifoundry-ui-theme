@@ -399,6 +399,34 @@ export default function AllMaterialUIComponents() {
                   <MenuItem value={4}>Item 4</MenuItem>
                 </Select>
               </FormControl>
+              <FormControl fullWidth>
+                <FormLabel>Select Error</FormLabel>
+                <Select
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                  displayEmpty
+                  className="error"
+                >
+                  <MenuItem value={1}>Item 1</MenuItem>
+                  <MenuItem value={2}>Item 2</MenuItem>
+                  <MenuItem value={3}>Item 3</MenuItem>
+                  <MenuItem value={4}>Item 4</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl fullWidth>
+                <FormLabel>Select Disabled</FormLabel>
+                <Select
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                  displayEmpty
+                  disabled
+                >
+                  <MenuItem value={1}>Item 1</MenuItem>
+                  <MenuItem value={2}>Item 2</MenuItem>
+                  <MenuItem value={3}>Item 3</MenuItem>
+                  <MenuItem value={4}>Item 4</MenuItem>
+                </Select>
+              </FormControl>
             </Box>
           </Stack>
           <Stack sx={{ minWidth: "49%" }}>

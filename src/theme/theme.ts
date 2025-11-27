@@ -353,7 +353,7 @@ export const getThemeOptions = (): ThemeOptions => ({
         .MuiBox-root textarea {
           width: 100%;
           min-height: 76px;
-          border: 1px solid #E5E5E5;
+          border: 1px solid #C8D2DD;
           border-radius: 4px;
           box-shadow: 0px 1px 2px 0px #0000000D;
           padding: 8px;
@@ -371,7 +371,7 @@ export const getThemeOptions = (): ThemeOptions => ({
 
         .MuiBox-root textarea:disabled {
           background-color: transparent;
-          border-color: #E5E5E5;
+          border-color: #E6EBF5;
           color: #B5B5B5;
         }
       `,
@@ -778,7 +778,7 @@ export const getThemeOptions = (): ThemeOptions => ({
     MuiInputBase: {
       styleOverrides: {
         root: {
-          border: `1px solid ${colors.grey[200]}`,
+          border: `1px solid ${colors.grey[300]}`,
           borderRadius: "6px",
           color: colors.grey.A400,
           fontSize: "14px",
@@ -794,6 +794,10 @@ export const getThemeOptions = (): ThemeOptions => ({
             borderColor: colors.grey.A400,
             boxShadow: "0px 0px 0px 3px #D4D4D4",
           },
+          "&.Mui-disabled": {
+            border: `1px solid ${colors.grey[100]}`,
+          },
+
           "&.Mui-error": {
             borderColor: colors.red[900],
 
@@ -801,13 +805,13 @@ export const getThemeOptions = (): ThemeOptions => ({
               boxShadow: `0px 0px 0px 3px ${colors.red[800]}`,
             },
           },
-          "&:has(.MuiInputBase-inputSizeSmall)": {
+          "&.MuiInputBase-sizeSmall": {
             height: "24px",
           },
-          "&:has(.MuiInputBase-inputSizeMedium)": {
+          "&.MuiInputBase-sizeMedium": {
             height: "32px",
           },
-          "&:has(.MuiInputBase-inputSizeLarge)": {
+          "&.MuiInputBase-sizeLarge": {
             height: "40px",
           },
         },
@@ -885,23 +889,86 @@ export const getThemeOptions = (): ThemeOptions => ({
     MuiSelect: {
       styleOverrides: {
         root: {
+          position: "relative",
           border: "none",
           borderRadius: "8px",
           fontStyle: "normal",
+
+          svg: {
+            display: "none",
+          },
+
+          "&:before": {
+            position: "absolute",
+            top: "calc(50% - 3px)",
+            right: "13px",
+            content: '""',
+            display: "block",
+            width: "1.5px",
+            height: "7px",
+            backgroundColor: colors.grey[800],
+            transform: "rotate(45deg)",
+          },
+
+          "&:after": {
+            position: "absolute",
+            top: "calc(50% - 3px)",
+            right: "17px",
+            content: '""',
+            display: "block",
+            width: "1.5px",
+            height: "7px",
+            backgroundColor: colors.grey[800],
+            transform: "rotate(135deg)",
+          },
+
           "& .MuiOutlinedInput-notchedOutline": {
-            border: `1px solid ${colors.grey[200]}`,
+            border: `1px solid ${colors.grey[300]}`,
           },
           "&:hover": {
             "& .MuiOutlinedInput-notchedOutline": {
-              border: `1px solid ${colors.grey[200]}`,
+              border: `1px solid ${colors.grey[300]}`,
             },
           },
           "&.Mui-focused": {
             //backgroundColor: "red",
             border: `none`,
             "& .MuiOutlinedInput-notchedOutline": {
-              border: `1px solid ${colors.grey[200]}`,
+              border: `1px solid ${colors.grey[300]}`,
             },
+            "& .MuiSelect-icon": {
+              color: colors.grey[300],
+            },
+
+            "&:before": {
+              transform: "rotate(135deg)",
+            },
+
+            "&:after": {
+              transform: "rotate(45deg)",
+            },
+          },
+          "&.&.Mui-disabled": {
+            border: 0,
+          },
+
+          "&.Mui-disabled .MuiOutlinedInput-notchedOutline": {
+            borderColor: colors.grey[100],
+            boxShadow: "none",
+
+            "& .MuiSelect-icon": {
+              color: colors.grey[100],
+            },
+          },
+
+          "&.error .MuiOutlinedInput-notchedOutline": {
+            border: `1px solid ${colors.red[900]}`,
+          },
+
+          "&.error.Mui-focused": {
+            //backgroundColor: "red",
+            boxShadow: `0px 0px 0px 3px ${colors.red[800]}`,
+            border: `none`,
             "& .MuiSelect-icon": {
               color: colors.grey[200],
             },
@@ -1032,7 +1099,7 @@ export const getThemeOptions = (): ThemeOptions => ({
           margin: "8px",
         },
         switchBase: {
-          backgroundColor: colors.grey.A400,
+          backgroundColor: "none",
           padding: 1,
           "&.Mui-checked": {
             transform: "translateX(15px)",
@@ -1041,7 +1108,7 @@ export const getThemeOptions = (): ThemeOptions => ({
               opacity: 1,
             },
           },
-          "&.Mui-checked.Mui-disabled": {
+          "&.Mui-checked.Mui-disabled + .MuiSwitch-track": {
             backgroundColor: "#D4D4D4",
           },
           "&.Mui-disabled.Mui-checked": {
