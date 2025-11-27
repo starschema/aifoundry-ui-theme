@@ -897,7 +897,7 @@ export const getThemeOptions = (): ThemeOptions => ({
             },
           },
           "&.Mui-focused": {
-            backgroundColor: "red",
+            //backgroundColor: "red",
             border: `none`,
             "& .MuiOutlinedInput-notchedOutline": {
               border: `1px solid ${colors.grey[200]}`,
