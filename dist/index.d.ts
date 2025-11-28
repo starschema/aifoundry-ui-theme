@@ -1,7 +1,5 @@
 import { Theme } from '@mui/material';
 
-// import { PaginationItemProps } from "@mui/material/PaginationItem";
-
 declare const hclTheme: Theme;
 
 declare module "@mui/material/InputBase" {
@@ -81,33 +79,6 @@ declare module "@mui/material/IconButton" {
     destructive: true;
   }
 }
-
-declare module "@mui/material/PaginationItem" {
-  interface PaginationItemOwnProps {
-    disableFocusRipple?: boolean;
-    disableRipple?: boolean;
-    disableTouchRipple?: boolean;
-  }
-}
-
-// declare module "@mui/material/PaginationItem" {
-//   interface PaginationItemTypeMap<
-//     AdditionalProps = {disableFocusRipple?: boolean;
-//     disableRipple?: boolean;
-//     disableTouchRipple?: boolean;},
-//     RootComponent extends React.ElementType = "div",
-//   > {
-//     props: AdditionalProps & PaginationItemOwnProps;
-//     defaultComponent: RootComponent;
-//   }
-// }
-// declare module "@mui/material/PaginationItem" {
-//   type PaginationItemProps = {
-//     disableFocusRipple?: boolean;
-//     disableRipple?: boolean;
-//     disableTouchRipple?: boolean;
-//   };
-// }
 
 declare module "@mui/material/Badge" {
   interface BadgePropsVariantOverrides {
