@@ -9,7 +9,7 @@ import {
 } from "../components/CustomComponents";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import React from "react";
-import { Timer10 } from "@mui/icons-material";
+import { PaginationItemProps } from "@mui/material";
 
 // HCL Color Palette - exported for use in custom components
 export const colors = {
@@ -1337,9 +1337,9 @@ export const getThemeOptions = (): ThemeOptions => ({
         disableFocusRipple: true,
         disableRipple: true,
         disableTouchRipple: true,
-      },
+      } as PaginationItemProps,
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           minHeight: 36,
           width: 34,
           padding: "7.5px 4px",
@@ -1349,6 +1349,7 @@ export const getThemeOptions = (): ThemeOptions => ({
             border: `1px solid ${colors.grey[200]}`,
             boxShadow:
               "0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10)",
+            color: theme.vars.palette.text.primary,
           },
           "&:hover": {
             backgroundColor: colors.grey[100],
@@ -1357,7 +1358,7 @@ export const getThemeOptions = (): ThemeOptions => ({
             boxShadow: `0 0 0 3px ${colors.grey[300]}`,
             backgroundColor: "transparent",
           },
-        },
+        }),
       },
     },
     MuiBreadcrumbs: {
