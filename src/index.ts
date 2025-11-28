@@ -1,4 +1,5 @@
 export { hclTheme } from "./theme/theme";
+export { DefaultLocalizationProvider } from "./components/CustomComponents";
 declare module "@mui/material/ToggleButtonGroup" {
   interface ToggleButtonGroupPropsSizeOverrides {
     mini: true;
