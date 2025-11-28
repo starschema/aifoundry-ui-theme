@@ -4,6 +4,7 @@ import {
   AccordionExpandIcon,
   AlertNeutralIcon,
   BreadcrumbSeparatorIcon,
+  DateDefaultInput,
   SnackbarTransition,
 } from "../components/CustomComponents";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
@@ -1610,55 +1611,191 @@ export const getThemeOptions = (): ThemeOptions => ({
         },
       },
     },
-    MuiPickersTextField: {
-      styleOverrides: {
-        root: {
-          fontSize: 14,
-        },
-      },
-    },
-    MuiPickersInputBase: {
-      styleOverrides: {
-        root: {
-          fontSize: 14,
-        },
-      },
-    },
-    MuiInputAdornment: {
-      defaultProps: {
-        // variant: "outlined",
-      },
-      styleOverrides: {
-        root: {},
-      },
-    },
-    MuiDatePicker: {
-      defaultProps: {
-        slotProps: {
-          openPickerButton: {
-            // variant: "ghost"
-            className: "MuiIconButton-ghost",
-          },
-          inputAdornment: {
-            // component: DatePickerInputAdornment,
-          },
-        },
-      },
-    },
     MuiTimePicker: {
       defaultProps: {
+        slots: {
+          textField: DateDefaultInput,
+        },
         slotProps: {
           openPickerButton: {
             className: "MuiIconButton-ghost",
+          },
+          desktopPaper: {
+            sx: {
+              borderRadius: "8px",
+            },
+          },
+          mobilePaper: {
+            sx: {
+              borderRadius: "8px",
+            },
+          },
+          popper: {
+            popperOptions: {
+              modifiers: [
+                {
+                  name: "offset",
+                  options: {
+                    offset: [0, 8],
+                  },
+                },
+              ],
+            },
           },
         },
       },
     },
     MuiDateTimePicker: {
       defaultProps: {
+        slots: {
+          textField: DateDefaultInput,
+        },
         slotProps: {
           openPickerButton: {
             className: "MuiIconButton-ghost",
+          },
+          desktopPaper: {
+            sx: {
+              borderRadius: "8px",
+            },
+          },
+          mobilePaper: {
+            sx: {
+              borderRadius: "8px",
+            },
+          },
+          popper: {
+            popperOptions: {
+              modifiers: [
+                {
+                  name: "offset",
+                  options: {
+                    offset: [0, 8],
+                  },
+                },
+              ],
+            },
+          },
+        },
+      },
+    },
+    MuiDatePicker: {
+      defaultProps: {
+        slots: {
+          textField: DateDefaultInput,
+        },
+        slotProps: {
+          openPickerButton: {
+            className: "MuiIconButton-ghost",
+          },
+          desktopPaper: {
+            sx: {
+              borderRadius: "8px",
+            },
+          },
+          mobilePaper: {
+            sx: {
+              borderRadius: "8px",
+            },
+          },
+          popper: {
+            popperOptions: {
+              modifiers: [
+                {
+                  name: "offset",
+                  options: {
+                    offset: [0, 8],
+                  },
+                },
+              ],
+            },
+          },
+        },
+      },
+    },
+    MuiPickersTextField: {
+      styleOverrides: {
+        root: {
+          ".Mui-focused": {
+            "&.MuiInputLabel-root": {
+              color: "var(--mui-palette-text-primary)",
+            },
+            ".MuiPickersOutlinedInput-notchedOutline": {
+              borderColor: `${colors.grey[300]} !important`,
+            },
+          },
+          ".MuiInputAdornment-root": {
+            ".MuiIconButton-root": {
+              padding: 2,
+              width: 24,
+              height: 24,
+            },
+          },
+        },
+      },
+    },
+    MuiPickersCalendarHeader: {
+      defaultProps: {
+        slotProps: {
+          switchViewButton: {
+            className: "MuiIconButton-ghost",
+          },
+          previousIconButton: {
+            className: "MuiIconButton-outlined",
+          },
+          nextIconButton: {
+            className: "MuiIconButton-outlined",
+          },
+        },
+      },
+      styleOverrides: {
+        root: {
+          ".MuiPickersArrowSwitcher-root": {
+            gap: 4,
+          },
+        },
+      },
+    },
+    MuiPickersDay: {
+      styleOverrides: {
+        root: {
+          borderRadius: 4,
+        },
+      },
+    },
+    MuiTimeClock: {
+      styleOverrides: {
+        arrowSwitcher: {
+          gap: 4,
+          button: {
+            width: 32,
+            height: 32,
+          },
+        },
+      },
+      defaultProps: {
+        slotProps: {
+          previousIconButton: {
+            className: "MuiIconButton-outlined",
+          },
+          nextIconButton: {
+            className: "MuiIconButton-outlined",
+          },
+        },
+      },
+    },
+    MuiMultiSectionDigitalClock: {
+      styleOverrides: {
+        root: {
+          ".MuiMenuList-root": {
+            display: "flex",
+            flexDirection: "column",
+          },
+          ".MuiMenuItem-root": {
+            borderRadius: "4px",
+            width: 36,
+            height: 36,
+            minHeight: 36,
           },
         },
       },
