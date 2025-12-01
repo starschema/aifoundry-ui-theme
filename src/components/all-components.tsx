@@ -666,27 +666,19 @@ export default function AllMaterialUIComponents() {
             Badges
           </Typography>
           <Stack direction="row" spacing={4}>
-            <Badge
-              badgeContent={"Badge"}
-              color={"primary"}
-              variant={"contained"}
-            >
+            <Badge badgeContent={"1"} color={"primary"} variant={"contained"}>
               <AlarmIcon />
             </Badge>
-            <Badge
-              badgeContent={"Badge"}
-              color={"secondary"}
-              variant={"contained"}
-            >
+            <Badge badgeContent={"2"} color={"secondary"} variant={"contained"}>
               <AlarmIcon />
             </Badge>
-            <Badge badgeContent={"Badge"} variant={"outlined"}>
+            <Badge badgeContent={"3"} variant={"outlined"}>
               <AlarmIcon />
             </Badge>
-            <Badge badgeContent={"Badge"} variant={"ghost"}>
+            <Badge badgeContent={"4"} variant={"ghost"}>
               <AlarmIcon />
             </Badge>
-            <Badge badgeContent={"Badge"} variant={"destructive"}>
+            <Badge badgeContent={"5"} variant={"destructive"}>
               <AlarmIcon />
             </Badge>
           </Stack>
