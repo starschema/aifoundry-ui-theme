@@ -1,6 +1,14 @@
 import { Theme } from '@mui/material';
+import { LocalizationProviderProps } from '@mui/x-date-pickers';
 
 declare const hclTheme: Theme;
+
+type LocalizationProviderComponent = (<TLocale>(
+  props: LocalizationProviderProps<TLocale>,
+) => React.JSX.Element) & {
+  propTypes?: any;
+};
+declare const DefaultLocalizationProvider: LocalizationProviderComponent;
 
 declare module "@mui/material/InputBase" {
   interface InputBasePropsSizeOverrides {
@@ -98,4 +106,4 @@ declare module "@mui/material/Badge" {
   }
 }
 
-export { hclTheme };
+export { DefaultLocalizationProvider, hclTheme };
