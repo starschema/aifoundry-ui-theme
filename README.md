@@ -15,7 +15,7 @@ A custom Material UI theme library featuring HCL branding, custom color palettes
 Install the package along with required peer dependencies:
 
 ```bash
-npm install github:starschema/aifoundry-ui-theme @emotion/react @emotion/styled @fontsource/lato @mui/icons-material @mui/icons-materialmui/material @mui/x-date-pickers moment
+npm install github:starschema/aifoundry-ui-theme @emotion/react @emotion/styled @fontsource/lato @mui/icons-material @mui/material @mui/x-date-pickers moment
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ Use the `DefaultLocalizationProvider` as well if you are using calendar componen
 
 ```tsx
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import { hclTheme } from "@hcl/aifoundry-ui-theme";
+import { hclTheme, DefaultLocalizationProvider } from "@hcl/aifoundry-ui-theme";
 import "@fontsource/lato";
 import React from "react";
 
