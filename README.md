@@ -5,7 +5,7 @@ A custom Material UI theme library featuring HCL branding, custom color palettes
 ## Features
 
 - **Custom HCL Color Palette** - Purple, blue, teal, green, yellow, coral, bronze, and grey variants
-- **HCL Tech Roobert Font** - Custom branded typography with multiple font weights
+- **Lato font** - Lato font with ultiple weights
 - **Component Customizations** - Styled overrides for all major MUI components
 - **TypeScript Support** - Full type definitions included
 - **CSS Variables** - Modern CSS custom properties for dynamic theming
@@ -15,25 +15,30 @@ A custom Material UI theme library featuring HCL branding, custom color palettes
 Install the package along with required peer dependencies:
 
 ```bash
-npm install github:starschema/aifoundry-ui-theme
+npm install github:starschema/aifoundry-ui-theme @emotion/react @emotion/styled @fontsource/lato @mui/icons-material @mui/icons-materialmui/material @mui/x-date-pickers moment
 ```
 
 ## Usage
 
 ### Basic Setup
 
-Wrap your application with the `ThemeProvider` and use either the `hclTheme`:
+Wrap your application with the `ThemeProvider` and use the `hclTheme`. You need to use the `CssBaseline` component as well.<br/>
+You need to import the font package as well.<br/>
+Use the `DefaultLocalizationProvider` as well if you are using calendar components.
 
 ```tsx
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { hclTheme } from "@hcl/aifoundry-ui-theme";
+import "@fontsource/lato";
 import React from "react";
 
 function App() {
   return (
     <ThemeProvider theme={hclTheme}>
-      <CssBaseline />
-      {/* Your app components */}
+        <DefaultLocalizationProvider>
+          <CssBaseline />
+          {/* Your app components */}
+        </DefaultLocalizationProvider>
     </ThemeProvider>
   );
 }
@@ -43,14 +48,7 @@ export default App;
 
 ### Font Assets
 
-The fonts are available in the installed npm package. You need to copy these files into your public assets folder. You have to make sure that this folder exists first.
-
-To achieve this, you can run these commands from your project's root folder.
-
-```bash
-mkdir -p public/assets/fonts
-cp -r node_modules/@hcl/aifoundry-ui-theme/public/assets/fonts public/assets
-```
+The fonts are available in the installed npm package. You need to import the npm package in order to include them in your project!
 
 ## Available Exports
 
@@ -59,6 +57,7 @@ import { hclTheme } from "@hcl/ui-theme-test";
 ```
 
 - **`hclTheme`** - Pre-configured theme with HCL branding
+-  DefaultLocalizationProvider - Pre-configured localization provider for Mui date pickers, using momentjs
 
 ## Color Palette
 
@@ -122,6 +121,7 @@ npm install
 - **`npm run build`** - Build the library for production
 - **`npm run preview`** - Preview the production build
 - **`npm run lint`** - Run ESLint
+- npm run rollup - Build the package using rollup
 
 ### Testing the Theme
 
@@ -145,9 +145,9 @@ import { hclTheme } from "@hcl/ui-theme-test";
 const theme: Theme = hclTheme;
 ```
 
-### Custom Size Variants
+### Custom Variants
 
-The theme includes custom size variants for some components:
+The theme includes custom size and other variants for some components:
 
 ```tsx
 import { ToggleButtonGroup } from "@mui/material";
