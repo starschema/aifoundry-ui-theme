@@ -97,7 +97,7 @@ export default function AllMaterialUIComponents() {
   const [dateValue, setDateValue] = React.useState<Moment | null>(moment());
   const [timeValue, setTimeValue] = React.useState<Moment | null>(moment());
   const [dateTimeValue, setDateTimeValue] = React.useState<Moment | null>(
-    moment(),
+    moment()
   );
 
   const colors = [
@@ -113,7 +113,7 @@ export default function AllMaterialUIComponents() {
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
       <Typography variant="h2" gutterBottom sx={{ mb: 4, fontWeight: "bold" }}>
-        Material UI v7 Component Showcase
+        Material UI v7 Component Showcase Merge Test
       </Typography>
 
       <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
