@@ -4,7 +4,7 @@ import { LocalizationProviderProps } from "@mui/x-date-pickers";
 export declare const hclTheme: Theme;
 
 type LocalizationProviderComponent = (<TLocale>(
-  props: LocalizationProviderProps<TLocale>,
+  props: LocalizationProviderProps<TLocale>
 ) => React.JSX.Element) & {
   propTypes?: any;
 };
@@ -48,6 +48,15 @@ declare module "@mui/material/IconButton" {
 
 declare module "@mui/material/Badge" {
   interface BadgePropsVariantOverrides {
+    contained: true;
+    outlined: true;
+    ghost: true;
+    destructive: true;
+  }
+}
+
+declare module "@mui/material/Chip" {
+  interface ChipPropsVariantOverrides {
     contained: true;
     outlined: true;
     ghost: true;
