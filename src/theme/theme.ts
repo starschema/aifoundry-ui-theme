@@ -551,14 +551,6 @@ export const getThemeOptions = (): ThemeOptions => ({
         },
       },
     },
-    MuiChip: {
-      styleOverrides: {
-        root: {
-          borderRadius: 8,
-          fontWeight: 500,
-        },
-      },
-    },
     MuiTextField: {
       styleOverrides: {
         root: {
@@ -1581,6 +1573,106 @@ export const getThemeOptions = (): ThemeOptions => ({
             },
           },
           "& .MuiBadge-destructive": {
+            backgroundColor: colors.red[900],
+            border: "none",
+            color: "white",
+
+            "&:hover": {
+              backgroundColor: colors.red[900],
+            },
+            "&:focus": {
+              backgroundColor: colors.red[900],
+              boxShadow: `0px 0px 0px 3px ${colors.red[800]}`,
+            },
+            "&:disabled": {
+              backgroundColor: "#ee9292",
+              color: "white",
+            },
+          },
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          backgroundColor: colors.purple[700],
+          borderRadius: "4px",
+          boxShadow: "none",
+          textTransform: "none",
+          fontSize: "12px",
+          fontWeight: 500,
+
+          "& .MuiChip-root:hover": {
+            boxShadow: "none",
+          },
+          "&.MuiChip-filled": {
+            backgroundColor: colors.purple[700],
+            border: "none",
+            color: "white",
+
+            "&:hover": {
+              backgroundColor: colors.purple[700],
+              boxShadow: `0px 0px 0px 3px ${colors.purple[200]}`,
+            },
+            "&:focus": {
+              backgroundColor: colors.purple[700],
+              boxShadow: `0px 0px 0px 3px ${colors.grey[400]}`,
+            },
+            "&:not(.MuiChip-loading):disabled": {
+              backgroundColor: colors.purple[200],
+              color: "white",
+            },
+          },
+          "&.MuiChip-colorSecondary.MuiChip-filled": {
+            backgroundColor: "white",
+            border: "none",
+            boxShadow: `0px 0px 0px 1px ${colors.purple[700]}`,
+            color: colors.grey.A400,
+            "&:hover": {
+              boxShadow: `0px 0px 0px 2px ${colors.purple[700]}`,
+            },
+            "&:focus": {
+              boxShadow: `0px 0px 0px 3px ${colors.purple[700]}`,
+            },
+            "&:disabled": {
+              backgroundColor: colors.grey[100],
+              boxShadow: "none",
+              color: colors.grey[800],
+            },
+          },
+          "&.MuiChip-outlined": {
+            backgroundColor: "white",
+            border: `1px solid ${colors.grey[200]}`,
+            boxShadow: "0px 1px 2px -1px #0000001A",
+            color: colors.grey.A400,
+
+            "&:hover": {
+              boxShadow: "0px 1px 3px 0px #0000001A",
+            },
+            "&:focus": {
+              boxShadow: "0px 0px 0px 3px #D4D4D4",
+            },
+            "&:disabled": {
+              borderColor: colors.grey[100],
+              color: colors.grey[800],
+            },
+          },
+          "&.MuiChip-ghost": {
+            backgroundColor: "transparent",
+            border: "3px solid transparent",
+
+            "&:hover": {
+              backgroundColor: colors.grey[200],
+            },
+            "&:focus": {
+              backgroundColor: "transparent",
+              boxShadow: `0px 0px 0px 3px ${colors.grey[200]}`,
+            },
+            "&:disabled": {
+              color: colors.grey[800],
+            },
+          },
+          "&.MuiChip-destructive": {
             backgroundColor: colors.red[900],
             border: "none",
             color: "white",

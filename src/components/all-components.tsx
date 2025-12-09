@@ -113,7 +113,7 @@ export default function AllMaterialUIComponents() {
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
       <Typography variant="h2" gutterBottom sx={{ mb: 4, fontWeight: "bold" }}>
-        Material UI v7 Component Showcase Merge Test
+        Material UI v7 Component Showcase Merge
       </Typography>
 
       <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
@@ -605,59 +605,11 @@ export default function AllMaterialUIComponents() {
             <Typography variant="body2" sx={{ width: "100%", mb: 1 }}>
               Filled:
             </Typography>
-            {colors.map((color) => (
-              <Chip key={color} label={color} color={color} />
-            ))}
-          </Stack>
-          <Stack
-            direction="row"
-            spacing={1}
-            flexWrap="wrap"
-            useFlexGap
-            sx={{ mb: 2 }}
-          >
-            <Typography variant="body2" sx={{ width: "100%", mb: 1 }}>
-              Outlined:
-            </Typography>
-            {colors.map((color) => (
-              <Chip
-                key={color}
-                label={color}
-                color={color}
-                variant="outlined"
-              />
-            ))}
-          </Stack>
-          <Stack
-            direction="row"
-            spacing={1}
-            flexWrap="wrap"
-            useFlexGap
-            sx={{ mb: 2 }}
-          >
-            <Typography variant="body2" sx={{ width: "100%", mb: 1 }}>
-              Sizes:
-            </Typography>
-            {sizes.map((size) => (
-              <Chip key={size} label={size} size={size} color="primary" />
-            ))}
-          </Stack>
-          <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-            <Typography variant="body2" sx={{ width: "100%", mb: 1 }}>
-              With Avatar & Deletable:
-            </Typography>
-            <Chip
-              avatar={<Avatar>M</Avatar>}
-              label="With Avatar"
-              color="secondary"
-            />
-            <Chip label="Deletable" onDelete={() => {}} color="success" />
-            <Chip
-              label="Clickable"
-              onClick={() => {}}
-              onDelete={() => {}}
-              color="info"
-            />
+            <Chip label="primary" />
+            <Chip label="secondary" color="secondary" />
+            <Chip label="outlined" variant="outlined" />
+            <Chip label="ghost" variant="ghost" />
+            <Chip label="destructive" variant="destructive" />
           </Stack>
         </Box>
 
