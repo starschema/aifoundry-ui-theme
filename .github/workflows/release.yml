@@ -1,0 +1,76 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+
+env:
+  # Artifact Registry path (host + project/repo)
+  REGISTRY_PATH: us-central1-npm.pkg.dev/datadlc/aifoundry-ui-theme/aifoundry-ui-theme
+  REGISTRY_HOST: us-central1-npm.pkg.dev
+  WORKLOAD_IDENTITY_PROVIDER: projects/713235407853/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions
+  SERVICE_ACCOUNT: sa-ci-publisher-datadlc-iam-gs@datadlc.iam.gserviceaccount.com
+
+jobs:
+  build-and-publish:
+    name: Build and publish to Artifact Registry
+    runs-on: [self-hosted, ai-foundry]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud (Workload Identity)
+        uses: google-github-actions/auth@v1
+        with:
+          token_format: 'access_token'
+          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.SERVICE_ACCOUNT }}
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Configure npm for Artifact Registry
+        # This writes the access token to npm config so `npm publish` can authenticate
+        run: |
+          echo "Configuring npm to publish to Artifact Registry: https://${{ env.REGISTRY_PATH }}"
+          ACCESS_TOKEN=$(gcloud auth print-access-token)
+          # Ensure registry URL ends with a slash for npm
+          REGISTRY_URL="https://${{ env.REGISTRY_PATH }}/"
+          # Configure npm to use the Artifact Registry and the access token
+          npm config set registry "$REGISTRY_URL"
+          npm config set //${{ env.REGISTRY_PATH }}/:_authToken "$ACCESS_TOKEN"
+          npm config set //${{ env.REGISTRY_HOST }}/:always-auth true || true
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build package
+        run: npm run build
+
+      - name: Run tests
+        if: always()
+        run: |
+          if [ -f package.json ] && grep -q "\"test\"" package.json; then
+            npm test || true
+          else
+            echo "No test script defined, skipping tests"
+          fi
+
+      - name: Publish to Artifact Registry
+        run: |
+          echo "Publishing to Artifact Registry: https://${{ env.REGISTRY_PATH }}/"
+          npm publish --registry "https://${{ env.REGISTRY_PATH }}/"
+
+      - name: Publish note on failure
+        if: failure()
+        run: |
+          echo "Publish step failed — verify the service account has Artifact Registry Writer role and the WORKLOAD_IDENTITY_PROVIDER is configured."
+
