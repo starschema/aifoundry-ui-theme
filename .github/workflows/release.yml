@@ -26,6 +26,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          ref: master
 
       - name: Authenticate to Google Cloud (Workload Identity)
         uses: google-github-actions/auth@v1
