@@ -58,10 +58,15 @@ jobs:
       - name: Build package
         run: npm run build
 
-      - name: Add built files to git
+      - name: Add built theme files to git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          # Skip if there is no change in the dist folder
+          if git diff --quiet -- dist/; then
+            echo "No changes in dist folder"
+            exit 0  # Exit successfully if no changes
+          fi
           git add dist
           git commit -m "new build added"
           git push
