@@ -12,7 +12,7 @@ permissions:
 
 env:
   # Artifact Registry path (host + project/repo)
-  REGISTRY_PATH: us-central1-npm.pkg.dev/datadlc/aifoundry-ui-theme/aifoundry-ui-theme
+  REGISTRY_PATH: us-central1-npm.pkg.dev/datadlc/aifoundry-ui-theme
   REGISTRY_HOST: us-central1-npm.pkg.dev
   WORKLOAD_IDENTITY_PROVIDER: projects/713235407853/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions
   SERVICE_ACCOUNT: sa-ci-publisher-datadlc-iam-gs@datadlc.iam.gserviceaccount.com
@@ -50,7 +50,9 @@ jobs:
           ACCESS_TOKEN=$(gcloud auth print-access-token)
           # Configure npm to use Artifact Registry for @hcl scope with full repository path
           npm config set @hcl:registry "https://${{ env.REGISTRY_PATH }}/"
-          npm config set //${{ env.REGISTRY_HOST }}/:_authToken "$ACCESS_TOKEN"
+          npm config set //${{ env.REGISTRY_PATH }}/:_authToken "$ACCESS_TOKEN"
+          npm config set //${{ env.REGISTRY_PATH }}/:always-auth=true
+
 
       - name: Install dependencies
         run: npm ci
