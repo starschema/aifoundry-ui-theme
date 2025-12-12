@@ -50,7 +50,6 @@ jobs:
           # Configure npm to use Artifact Registry for @hcl scope
           npm config set @hcl:registry "https://${{ env.REGISTRY_HOST }}/"
           npm config set //${{ env.REGISTRY_HOST }}/:_authToken "$ACCESS_TOKEN"
-          npm config set //${{ env.REGISTRY_HOST }}/:always-auth true
 
       - name: Install dependencies
         run: npm ci
