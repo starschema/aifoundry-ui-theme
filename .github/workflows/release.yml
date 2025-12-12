@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    tags: ['v*']
+    tags: ["v*"]
   workflow_dispatch:
 
 permissions:
@@ -28,14 +28,14 @@ jobs:
       - name: Authenticate to Google Cloud (Workload Identity)
         uses: google-github-actions/auth@v1
         with:
-          token_format: 'access_token'
+          token_format: "access_token"
           workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ env.SERVICE_ACCOUNT }}
 
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Configure npm for Artifact Registry
         # This writes the access token to npm config so `npm publish` can authenticate
@@ -73,4 +73,3 @@ jobs:
         if: failure()
         run: |
           echo "Publish step failed — verify the service account has Artifact Registry Writer role and the WORKLOAD_IDENTITY_PROVIDER is configured."
-
