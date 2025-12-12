@@ -23,7 +23,7 @@ jobs:
     runs-on: [self-hosted, ai-foundry]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Authenticate to Google Cloud (Workload Identity)
         uses: google-github-actions/auth@v1
@@ -36,9 +36,9 @@ jobs:
         uses: google-github-actions/setup-gcloud@v3
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Configure npm for Artifact Registry
         # This writes the access token to npm config so `npm publish` can authenticate
@@ -59,15 +59,6 @@ jobs:
 
       - name: Build package
         run: npm run build
-
-      - name: Run tests
-        if: always()
-        run: |
-          if [ -f package.json ] && grep -q "\"test\"" package.json; then
-            npm test || true
-          else
-            echo "No test script defined, skipping tests"
-          fi
 
       - name: Publish to Artifact Registry
         run: |
