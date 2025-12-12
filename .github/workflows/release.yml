@@ -47,17 +47,13 @@ jobs:
         run: |
           echo "Configuring npm to publish to Artifact Registry: https://${{ env.REGISTRY_PATH }}"
           ACCESS_TOKEN=$(gcloud auth print-access-token)
-          # Ensure registry URL ends with a slash for npm
-          REGISTRY_URL="https://${{ env.REGISTRY_PATH }}/"
-          # Configure npm to use the Artifact Registry and the access token
-          npm config set registry "$REGISTRY_URL"
-          npm config set //${{ env.REGISTRY_PATH }}/:_authToken "$ACCESS_TOKEN"
-          npm config set //${{ env.REGISTRY_HOST }}/:always-auth true || true
+          # Configure npm to use Artifact Registry for @hcl scope
+          npm config set @hcl:registry "https://${{ env.REGISTRY_HOST }}/"
+          npm config set //${{ env.REGISTRY_HOST }}/:_authToken "$ACCESS_TOKEN"
+          npm config set //${{ env.REGISTRY_HOST }}/:always-auth true
 
       - name: Install dependencies
-        run: |
-          npm set registry=https://registry.npmjs.org/
-          npm ci
+        run: npm ci
 
       - name: Build package
         run: npm run build
@@ -72,8 +68,8 @@ jobs:
 
       - name: Publish to Artifact Registry
         run: |
-          echo "Publishing to Artifact Registry: https://${{ env.REGISTRY_PATH }}/"
-          npm publish --registry "https://${{ env.REGISTRY_PATH }}/"
+          echo "Publishing to Artifact Registry: https://${{ env.REGISTRY_HOST }}/"
+          npm publish
 
       - name: Publish note on failure
         if: failure()
