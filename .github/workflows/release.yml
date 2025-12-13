@@ -87,6 +87,32 @@ jobs:
         run: |
           echo "Publishing to Artifact Registry: https://${{ env.REGISTRY_HOST }}/"
           npm publish
+          
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
+
+      - name: Add version-based dist-tags
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          # Extract version from tag
+          PACKAGE_NAME="@hcl/aifoundry-ui-theme"
+          VERSION=${GITHUB_REF#refs/tags/v}
+          TAGS=${{ steps.meta.outputs.tags }}
+          
+          echo "Adding dist-tags for version $VERSION"
+
+          for tag in "${TAGS[@]}"; do
+            npm dist-tag add ${PACKAGE_NAME}@${VERSION} ${tag}
+            echo "Tag added: ${tag}"
+          done
+          
 
       - name: Publish note on failure
         if: failure()
