@@ -28,6 +28,18 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: master
 
+      - name: Extract version from tag and update package.json
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          # Extract version from tag (remove 'v' prefix)
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "Version from tag: $VERSION"
+          
+          # Update package.json version
+          npm version $VERSION --no-git-tag-version --allow-same-version
+          
+          echo "Updated package.json to version $VERSION"
+
       - name: Authenticate to Google Cloud (Workload Identity)
         uses: google-github-actions/auth@v1
         with:
