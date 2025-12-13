@@ -71,33 +71,8 @@ jobs:
       - name: Publish to Artifact Registry
         run: |
           echo "Publishing to Artifact Registry: https://${{ env.REGISTRY_HOST }}/"
-          npm publish
-          
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          tags: |
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=sha
-
-      - name: Add version-based dist-tags
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: |
-          # Extract version from tag
-          PACKAGE_NAME="@hcl/aifoundry-ui-theme"
-          VERSION=${GITHUB_REF#refs/tags/v}
-          
-          echo "Adding dist-tags for version $VERSION"
-          
-          # Read tags line by line from the metadata action output
-          echo '${{ steps.meta.outputs.tags }}' | while IFS= read -r tag; do
-            if [ -n "$tag" ]; then
-              npm dist-tag add ${PACKAGE_NAME}@${VERSION} ${tag}
-              echo "Tag added: ${tag}"
-            fi
-          done
+          # Publish with 'latest' tag by default
+          npm publish --tag latest
 
       - name: Commit updated package.json
         if: startsWith(github.ref, 'refs/tags/v')
