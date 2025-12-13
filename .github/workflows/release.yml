@@ -28,16 +28,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: master
 
-      - name: Authenticate to Google Cloud (Workload Identity)
-        uses: google-github-actions/auth@v1
-        with:
-          token_format: "access_token"
-          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ env.SERVICE_ACCOUNT }}
-
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v3
-
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
@@ -54,15 +44,6 @@ jobs:
           npm version $VERSION --no-git-tag-version --allow-same-version
           
           echo "Updated package.json to version $VERSION"
-      - name: Configure npm for Artifact Registry
-        # This writes the access token to npm config so `npm publish` can authenticate
-        run: |
-          echo "Configuring npm to publish to Artifact Registry: https://${{ env.REGISTRY_PATH }}"
-          ACCESS_TOKEN=$(gcloud auth print-access-token)
-          # Configure npm to use Artifact Registry for @hcl scope with full repository path
-          npm config set @hcl:registry "https://${{ env.REGISTRY_PATH }}/"
-          npm config set //${{ env.REGISTRY_PATH }}/:_authToken "$ACCESS_TOKEN"
-
 
       - name: Install dependencies
         run: npm ci
@@ -70,18 +51,22 @@ jobs:
       - name: Build package
         run: npm run build
 
-      - name: Add built theme files to git
+      - name: Authenticate to Google Cloud (Workload Identity)
+        uses: google-github-actions/auth@v1
+        with:
+          token_format: "access_token"
+          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.SERVICE_ACCOUNT }}
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v3
+
+      - name: Configure npm for Artifact Registry
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          # Skip if there is no change in the dist folder
-          if git diff --quiet -- dist/; then
-            echo "No changes in dist folder"
-            exit 0  # Exit successfully if no changes
-          fi
-          git add dist
-          git commit -m "new build added"
-          git push
+          echo "Configuring npm to publish to Artifact Registry: https://${{ env.REGISTRY_PATH }}"
+          ACCESS_TOKEN=$(gcloud auth print-access-token)
+          npm config set @hcl:registry "https://${{ env.REGISTRY_PATH }}/"
+          npm config set //${{ env.REGISTRY_PATH }}/:_authToken "$ACCESS_TOKEN"
 
       - name: Publish to Artifact Registry
         run: |
@@ -104,14 +89,45 @@ jobs:
           # Extract version from tag
           PACKAGE_NAME="@hcl/aifoundry-ui-theme"
           VERSION=${GITHUB_REF#refs/tags/v}
-          TAGS=${{ steps.meta.outputs.tags }}
           
           echo "Adding dist-tags for version $VERSION"
-
-          for tag in "${TAGS[@]}"; do
-            npm dist-tag add ${PACKAGE_NAME}@${VERSION} ${tag}
-            echo "Tag added: ${tag}"
+          
+          # Read tags line by line from the metadata action output
+          echo '${{ steps.meta.outputs.tags }}' | while IFS= read -r tag; do
+            if [ -n "$tag" ]; then
+              npm dist-tag add ${PACKAGE_NAME}@${VERSION} ${tag}
+              echo "Tag added: ${tag}"
+            fi
           done
+
+      - name: Commit updated package.json
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Check if package.json has changes
+          if ! git diff --quiet -- package.json; then
+            git add package.json
+            git commit -m "chore: bump version to ${GITHUB_REF#refs/tags/v} [skip ci]"
+            git push
+          else
+            echo "No changes in package.json"
+          fi
+
+      - name: Commit built files
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Check if there are changes in dist folder
+          if ! git diff --quiet -- dist/; then
+            git add dist/
+            git commit -m "chore: update build artifacts [skip ci]"
+            git push
+          else
+            echo "No changes in dist folder"
+          fi
           
 
       - name: Publish note on failure
